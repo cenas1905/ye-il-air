@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YEŞİL AIR — Süspansiyon & Drift</title>
+<meta name="description" content="YEŞİL AIR Süspansiyon. Air süspansiyon, coilover ve drift sistemlerinde Türkiye'nin zirvesi.">
+<meta name="theme-color" content="#000000">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Instrument+Serif:ital@1&display=swap">
+
+<script>document.documentElement.className = document.documentElement.className.replace('no-js','js');</script>
+
+<style>
+:root{
+  --black:#000000;
+  --ink:#0A0A0B;
+  --ink-2:#101013;
+  --ink-3:#17171B;
+  --line:rgba(255,255,255,.12);
+  --line-soft:rgba(255,255,255,.07);
+  --white:#F4F4F2;
+  --white-dim:#A9A9A6;
+  --white-faint:#8B8B88;
+  --ember:#22c55e;
+  --accent:#22c55e;
+  --display:'Anton','Archivo',Impact,'Arial Narrow',sans-serif;
+  --grotesk:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --body:'Inter','Helvetica Neue',Arial,sans-serif;
+  --gut:clamp(20px,4vw,64px);
+  --maxw:1560px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--black);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.55;font-weight:300;overflow-x:clip;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img,video,canvas{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0}
+ol,ul{list-style:none;margin:0;padding:0}
+h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
+::selection{background:var(--ember);color:#000}
+:focus-visible{outline:2px solid var(--ember);outline-offset:4px;border-radius:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+
+.display{font-family:var(--display);font-weight:400;line-height:.86;letter-spacing:-.015em;text-transform:uppercase}
+.display--hero{font-size:clamp(3.1rem,11.2vw,10.6rem)}
+.display .line{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.07em}
+.display em{font-family:var(--serif);font-style:italic;text-transform:lowercase;letter-spacing:-.01em;font-weight:400;color:var(--white);padding-inline:.06em}
+.sec-title{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,6.4vw,5.6rem);line-height:.9;letter-spacing:-.015em;text-transform:uppercase}
+.sec-title--sm{font-size:clamp(2rem,4.6vw,3.9rem)}
+.sec-title em{font-family:var(--serif);font-style:italic;text-transform:lowercase;color:var(--ember);padding-inline:.04em}
+.kicker{display:inline-flex;align-items:center;gap:.62em;font-family:var(--grotesk);font-size:.66rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--white-dim)}
+.kicker .dot{width:5px;height:5px;border-radius:50%;background:var(--ember);flex:none;box-shadow:0 0 10px 1px rgba(34,197,94,.75)}
+.sec-note{max-width:44ch;color:var(--white-dim);font-size:clamp(.9rem,1.05vw,1.02rem);line-height:1.65}
+.lede{max-width:46ch;color:#DADAD7;font-size:clamp(.95rem,1.15vw,1.12rem);line-height:1.6;text-shadow:0 1px 16px rgba(0,0,0,.92)}
+
+/* PRELOADER */
+.preloader{position:fixed;inset:0;z-index:9000;background:var(--black);display:grid;place-items:center;padding:var(--gut)}
+.preloader[hidden]{display:none}
+.pre-inner{width:min(680px,100%);text-align:left}
+.pre-meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(24px,5vh,52px)}
+.pre-mark{font-family:var(--display);font-size:1.5rem;letter-spacing:.34em;text-transform:uppercase;color:var(--white)}
+.pre-tag{font-family:var(--grotesk);font-size:.6rem;font-weight:600;letter-spacing:.24em;color:var(--white-faint);text-transform:uppercase}
+.pre-num{font-family:var(--display);font-size:clamp(4rem,17vw,10rem);line-height:.84;letter-spacing:-.02em;color:var(--white);display:flex;align-items:flex-start;gap:.06em}
+.pre-num i{font-size:.24em;font-style:normal;color:var(--ember);margin-top:.35em}
+.pre-rail{position:relative;height:1px;background:rgba(255,255,255,.16);margin:clamp(20px,4vh,36px) 0 14px;overflow:hidden}
+.pre-fill{position:absolute;inset:0 auto 0 0;width:0%;background:var(--white);transform-origin:left}
+.pre-sweep{position:absolute;top:-1px;bottom:-1px;left:0;width:22%;background:linear-gradient(90deg,transparent,#fff,rgba(34,197,94,.9),transparent);filter:blur(.4px);animation:preSweep 1.5s cubic-bezier(.5,0,.5,1) infinite}
+@keyframes preSweep{0%{transform:translateX(-120%)}100%{transform:translateX(560%)}}
+.pre-status{font-family:var(--grotesk);font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--white-faint)}
+.pre-shutter{position:fixed;inset:0;display:flex;pointer-events:none}
+.pre-shutter i{flex:1;background:var(--black);transform:scaleY(0);transform-origin:top}
+
+/* CURSOR */
+.cursor{position:fixed;inset:0;z-index:9500;pointer-events:none;mix-blend-mode:difference}
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;border-radius:50%;will-change:transform;opacity:0}
+.cursor-dot{width:6px;height:6px;background:#fff;margin:-3px 0 0 -3px}
+.cursor-ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid rgba(255,255,255,.6);display:grid;place-items:center;transition:width .32s var(--ease),height .32s var(--ease),margin .32s var(--ease),border-color .3s}
+.cursor-ring.is-active{width:74px;height:74px;margin:-37px 0 0 -37px;border-color:rgba(255,255,255,.9)}
+.cursor-label{font-family:var(--grotesk);font-size:.52rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .22s;white-space:nowrap}
+.cursor-ring.is-active .cursor-label{opacity:1}
+@media (hover:none),(pointer:coarse){.cursor{display:none}}
+
+/* HUD */
+.hud{position:fixed;inset:0;z-index:600;pointer-events:none}
+.hud-progress{position:absolute;top:0;left:0;right:0;height:2px;background:rgba(255,255,255,.09)}
+.hud-progress-fill{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#fff,var(--ember));box-shadow:0 0 12px rgba(34,197,94,.5);will-change:transform}
+.hud-edge{position:absolute;top:50%;font-family:var(--grotesk);font-size:.58rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.58);white-space:nowrap}
+.hud-edge--l{left:0;transform:translate(-50%,-50%) rotate(-90deg);margin-left:26px}
+.hud-edge--r{right:0;transform:translate(50%,-50%) rotate(90deg);margin-right:26px}
+@media (max-width:1100px){.hud-edge{display:none}}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px var(--gut);mix-blend-mode:normal}
+.brand{display:inline-flex;align-items:center;gap:10px;pointer-events:auto}
+.brand-mark{width:20px;height:20px;color:var(--ember);flex:none}
+.brand-word{font-family:var(--display);font-size:1.02rem;letter-spacing:.38em;text-transform:uppercase;text-indent:.38em;color:var(--white)}
+.topnav{display:flex;align-items:center;gap:clamp(14px,2vw,30px)}
+.topnav a{font-family:var(--grotesk);font-size:.63rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62);transition:color .25s}
+.topnav a:hover{color:var(--white)}
+.topnav-cta{color:var(--white)!important;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 16px;transition:background .3s,border-color .3s,color .3s}
+.topnav-cta:hover{background:var(--ember);border-color:var(--ember);color:#000!important}
+@media (max-width:760px){.topnav a:not(.topnav-cta){display:none}.topbar{padding:14px var(--gut)}}
+
+/* SHARED STAGE */
+.stage-media{position:absolute;inset:0;overflow:hidden;background:var(--black)}
+.stage-plate{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;max-width:none}
+.stage-plate-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;max-width:none;image-rendering:high-quality;will-change:transform}
+.stage-vig{position:absolute;inset:0;z-index:5;pointer-events:none;background:radial-gradient(120% 90% at 50% 46%,transparent 28%,rgba(0,0,0,.62) 78%,#000 100%),linear-gradient(180deg,rgba(0,0,0,.72) 0%,transparent 26%,transparent 62%,rgba(0,0,0,.88) 100%)}
+.stage-vig--soft{background:radial-gradient(130% 100% at 50% 50%,transparent 34%,rgba(0,0,0,.45) 82%,rgba(0,0,0,.92) 100%),linear-gradient(180deg,rgba(0,0,0,.6) 0%,transparent 22%,transparent 66%,rgba(0,0,0,.8) 100%)}
+
+/* 01 HERO VIDEO */
+.reveal{position:relative;background:var(--black)}
+.reveal-stage{position:relative;height:100svh;min-height:560px;overflow:hidden}
+.stage-plate--under{z-index:1;transform:scale(1.06)}
+.stage-plate--veil{z-index:2;will-change:transform,opacity,filter;transform-origin:50% 82%;filter:blur(0px) brightness(1)}
+.stage-bars{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden;opacity:.55}
+.stage-bars i{position:absolute;left:-20%;width:140%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);filter:blur(1px)}
+.stage-bars i:nth-child(1){top:22%;transform:rotate(-7deg)}
+.stage-bars i:nth-child(2){top:29%;transform:rotate(6deg)}
+.reveal-copy{position:absolute;z-index:6;left:var(--gut);right:var(--gut);bottom:clamp(78px,13vh,132px);pointer-events:none}
+.reveal-copy .kicker{margin-bottom:clamp(14px,2.4vh,26px)}
+.reveal-copy .lede{margin-top:clamp(16px,2.6vh,30px)}
+.line--mix{letter-spacing:-.02em}
+.edge-stats{position:absolute;inset:0;z-index:6;pointer-events:none}
+.edge-stat{position:absolute;display:flex;flex-direction:column;gap:3px;font-family:var(--grotesk)}
+.edge-stat b{font-family:var(--display);font-size:1.5rem;font-weight:400;letter-spacing:.01em;line-height:1;color:var(--white);text-shadow:0 1px 14px rgba(0,0,0,.9)}
+.edge-stat b span{font-size:.5em;color:var(--ember);margin-left:.12em}
+.edge-stat>span{font-size:.54rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.62);text-shadow:0 1px 10px rgba(0,0,0,.9)}
+.edge-stat--tl{top:clamp(86px,13vh,124px);left:var(--gut)}
+.edge-stat--tr{top:clamp(86px,13vh,124px);right:var(--gut);align-items:flex-end;text-align:right}
+.edge-stat--bl{bottom:clamp(20px,4vh,40px);left:var(--gut)}
+@media (max-width:900px){.edge-stat--bl{display:none}}
+.reveal-trio{position:absolute;z-index:6;right:var(--gut);bottom:clamp(78px,13vh,132px);display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-family:var(--grotesk);font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6);text-shadow:0 1px 10px rgba(0,0,0,.9)}
+.reveal-trio span:nth-child(2){color:rgba(255,255,255,.8)}
+.reveal-trio span:nth-child(3){color:var(--ember)}
+@media (max-width:1000px){.reveal-trio{font-size:.5rem;letter-spacing:.2em;bottom:clamp(40px,8vh,60px)}}
+.scroll-cue{position:absolute;z-index:7;left:50%;transform:translateX(-50%);bottom:16px;display:flex;flex-direction:column;align-items:center;gap:7px}
+.scroll-cue span{font-family:var(--grotesk);font-size:.52rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);text-shadow:0 1px 10px rgba(0,0,0,.9)}
+.scroll-cue i{width:1px;height:34px;background:linear-gradient(180deg,rgba(255,255,255,.7),transparent);animation:cueDrop 1.9s ease-in-out infinite;transform-origin:top}
+@keyframes cueDrop{0%,100%{transform:scaleY(.3);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+@media (max-width:900px){.scroll-cue{display:none}}
+
+/* 02 SPECS */
+.specs{position:relative;background:var(--ink);padding:clamp(80px,13vh,170px) 0 clamp(70px,11vh,140px);border-top:1px solid var(--line-soft)}
+.sec-head{max-width:var(--maxw);margin-bottom:clamp(48px,8vh,96px)}
+.sec-head .kicker{margin-bottom:20px}
+.sec-head .sec-title{margin-bottom:22px}
+.spec-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.spec{position:relative;padding:clamp(24px,3.4vw,44px) clamp(14px,2vw,32px) clamp(24px,3.2vw,40px) 0;border-right:1px solid var(--line-soft)}
+.spec:last-child{border-right:0}
+.spec-idx{display:block;font-family:var(--grotesk);font-size:.56rem;font-weight:700;letter-spacing:.24em;color:var(--ember);margin-bottom:clamp(18px,3vh,38px)}
+.spec-fig{display:flex;align-items:baseline;font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6.2vw,6rem);line-height:.86;letter-spacing:-.02em;color:var(--white)}
+.spec-fig i{font-style:normal;font-size:.34em;color:var(--white-dim);margin-left:.04em}
+.spec-unit{display:block;margin-top:14px;font-family:var(--grotesk);font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--white)}
+.spec-label{display:block;margin-top:7px;font-size:.84rem;color:var(--white-dim);line-height:1.5}
+@media (max-width:900px){.spec-row{grid-template-columns:repeat(2,1fr)}.spec{border-bottom:1px solid var(--line-soft)}.spec:nth-child(2n){border-right:0}.spec:nth-child(n+3){border-bottom:0}}
+@media (max-width:480px){.spec-row{grid-template-columns:1fr}.spec{border-right:0}.spec:nth-child(3){border-bottom:1px solid var(--line-soft)}.spec-idx{margin-bottom:14px}}
+
+/* 03 DRIVE */
+.drive{position:relative;background:var(--black)}
+.drive-stage{position:relative;height:100svh;min-height:560px;overflow:hidden}
+.drive-word{position:absolute;z-index:4;inset:0;display:flex;align-items:center;justify-content:center;margin:0;pointer-events:none;will-change:transform}
+.drive-word span{display:inline-block;font-family:var(--grotesk);font-weight:300;font-size:clamp(4.6rem,20.5vw,19rem);line-height:.8;letter-spacing:.055em;text-indent:.055em;text-transform:uppercase;color:#fff;text-shadow:0 0 60px rgba(0,0,0,.55)}
+.drive-cards{position:absolute;z-index:7;left:var(--gut);right:var(--gut);bottom:clamp(70px,11vh,110px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,22px);max-width:1180px;margin-inline:auto}
+.gcard{border:1px solid rgba(255,255,255,.2);background:rgba(6,8,10,.46);backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15);padding:clamp(14px,1.6vw,24px);will-change:transform,opacity}
+.gcard-k{font-family:var(--grotesk);font-size:.54rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--ember);margin-bottom:clamp(14px,2.4vw,30px)}
+.gcard-fig{display:block;font-family:var(--display);font-weight:400;font-size:clamp(2rem,4.4vw,3.7rem);line-height:.88;letter-spacing:-.02em;color:#fff}
+.gcard-fig i{font-style:normal;font-size:.5em;color:var(--white-dim)}
+.gcard-sub{margin-top:10px;font-size:.8rem;line-height:1.5;color:rgba(255,255,255,.86)}
+@media (max-width:820px){.drive-cards{grid-template-columns:1fr;gap:12px;bottom:auto;top:auto;left:var(--gut);right:var(--gut);bottom:clamp(40px,7vh,80px);max-width:100%;margin-inline:0}.gcard{display:flex;flex-direction:column;gap:6px;padding:16px}.gcard-k{margin-bottom:4px}.gcard-fig{font-size:1.8rem}.gcard-sub{display:block;font-size:.75rem}}
+.drive-caption{position:absolute;z-index:7;left:var(--gut);top:clamp(86px,13vh,124px);font-family:var(--grotesk);font-size:.56rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.78);text-shadow:0 1px 12px rgba(0,0,0,.95)}
+
+/* 04 GALLERY */
+.gallery{position:relative;background:var(--ink);border-top:1px solid var(--line-soft)}
+.gallery-pin{position:relative;height:100svh;min-height:560px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.gallery-head{padding:0 var(--gut);margin-bottom:clamp(22px,4vh,46px);flex:none}
+.gallery-head .kicker{margin-bottom:14px}
+.gallery-track{display:flex;align-items:stretch;gap:clamp(16px,2.4vw,40px);padding-inline:var(--gut);will-change:transform}
+.slab{position:relative;flex:none;width:clamp(280px,44vw,620px);display:flex;flex-direction:column}
+.slab-idx{font-family:var(--display);font-size:clamp(1.6rem,2.6vw,2.6rem);line-height:1;color:rgba(255,255,255,.36);margin-bottom:10px;letter-spacing:.02em}
+.slab-img{position:relative;overflow:hidden;aspect-ratio:16/10;max-height:46vh;background:var(--ink-3);border:1px solid var(--line-soft)}
+.slab-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);transition:transform .9s var(--ease),filter .9s var(--ease);filter:saturate(.86) contrast(1.04)}
+.slab:hover .slab-img img{transform:scale(1);filter:saturate(1) contrast(1.06)}
+.slab figcaption{padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.slab figcaption b{font-family:var(--grotesk);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--white)}
+.slab figcaption span{font-size:.86rem;color:var(--white-dim);line-height:1.5;max-width:38ch}
+.gallery-rail{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(22px,4vh,40px);height:1px;background:rgba(255,255,255,.14)}
+.gallery-rail span{display:block;height:100%;width:100%;background:var(--ember);transform:scaleX(.08);transform-origin:left;will-change:transform}
+@media (max-width:900px){.gallery-pin{height:auto;min-height:0;padding:clamp(70px,11vh,130px) 0}.gallery-track{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding-inline:var(--gut);padding-bottom:30px;scrollbar-width:none;-ms-overflow-style:none;transform:none!important}.gallery-track::-webkit-scrollbar{display:none}.slab{width:85vw;scroll-snap-align:center}.gallery-rail{display:none}}
+
+/* 06 OUTRO */
+.outro{position:relative;background:var(--black)}
+.outro-pin{position:relative;height:100svh;min-height:560px;display:grid;place-items:center;overflow:hidden;padding:0 var(--gut)}
+.outro-bg{position:absolute;inset:0;z-index:0;will-change:transform}
+.outro-bg img{width:100%;height:100%;object-fit:cover;max-width:none;transform:scale(1.16);filter:brightness(.86) contrast(1.14) saturate(.86)}
+.outro-pin .stage-vig{z-index:1}
+.outro-kicker{position:absolute;z-index:3;top:clamp(90px,15vh,150px);left:50%;transform:translateX(-50%);font-family:var(--grotesk);font-size:.6rem;font-weight:700;letter-spacing:.36em;text-transform:uppercase;color:var(--ember);white-space:nowrap;text-shadow:0 1px 14px rgba(0,0,0,.95)}
+.outro-word{position:relative;z-index:3;margin:0;text-align:center}
+.outro-letters{display:flex;justify-content:center;flex-wrap:nowrap;font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,11.4vw,11rem);line-height:.86;letter-spacing:-.005em;text-transform:uppercase;color:#fff}
+.outro-letters .ch{display:inline-block;will-change:transform,opacity}
+.outro-sub{position:absolute;z-index:3;bottom:clamp(80px,13vh,132px);left:50%;transform:translateX(-50%);text-align:center;color:#DADAD7;font-size:clamp(.85rem,1.05vw,1rem);line-height:1.62;max-width:min(46ch,86vw);text-shadow:0 1px 16px rgba(0,0,0,.92)}
+
+/* 07 RESERVE */
+.reserve{position:relative;background:var(--ink);padding:clamp(90px,15vh,190px) 0 clamp(80px,12vh,150px);border-top:1px solid var(--line-soft)}
+.reserve-wrap .kicker{margin-bottom:20px}
+.reserve-wrap .sec-title{margin-bottom:22px}
+.reserve-wrap .sec-note{margin-bottom:clamp(36px,6vh,58px)}
+.bigcta{display:inline-flex;align-items:center;gap:22px;padding:20px 30px;border:1px solid rgba(255,255,255,.3);border-radius:999px;position:relative;overflow:hidden;transition:border-color .4s,color .4s;color:var(--white)}
+.bigcta::before{content:'';position:absolute;inset:0;background:var(--ember);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease);z-index:0}
+.bigcta:hover::before{transform:scaleX(1)}
+.bigcta:hover{color:#000;border-color:var(--ember)}
+.bigcta-l{position:relative;z-index:1;font-family:var(--display);font-size:clamp(1.05rem,2.1vw,1.75rem);letter-spacing:.12em;text-transform:uppercase}
+.bigcta-a{position:relative;z-index:1;width:26px;height:26px;flex:none}
+.bigcta-a svg{width:100%;height:100%}
+.reserve-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:clamp(44px,7vh,76px);border-top:1px solid var(--line);padding-top:24px;max-width:820px}
+.reserve-meta b{display:block;font-family:var(--grotesk);font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);margin-bottom:8px}
+.reserve-meta span{font-family:var(--grotesk);font-size:.94rem;color:var(--white)}
+@media (max-width:640px){.reserve-meta{grid-template-columns:1fr;gap:14px}}
+
+/* FOOTER */
+.foot{background:var(--black);border-top:1px solid var(--line-soft);overflow:hidden}
+.marquee{overflow:hidden;border-bottom:1px solid var(--line-soft);padding:clamp(16px,2.6vh,28px) 0}
+.marquee-track{display:flex;width:max-content;will-change:transform}
+.marquee-track span{display:inline-flex;align-items:center;font-family:var(--display);font-size:clamp(1.6rem,4.4vw,3.4rem);letter-spacing:.03em;text-transform:uppercase;color:rgba(255,255,255,.26);white-space:nowrap;padding-right:.4em}
+.marquee-track i{font-style:normal;color:var(--ember);padding:0 .34em;font-size:.44em}
+.foot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,52px);padding-top:clamp(44px,7vh,80px);padding-bottom:clamp(34px,5vh,60px)}
+.foot-col{display:flex;flex-direction:column;gap:9px;align-items:flex-start}
+.foot-mark{font-family:var(--display);font-size:1.6rem;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;color:var(--white)}
+.foot-h{font-family:var(--grotesk);font-size:.54rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--ember);margin-bottom:4px}
+.foot-col a{font-size:.88rem;color:var(--white-dim);transition:color .25s}
+.foot-col a:hover{color:var(--white)}
+.foot-fine{font-size:.78rem;line-height:1.55;color:var(--white-faint);max-width:34ch}
+.foot-fine--dim{color:#7A7A78;margin-top:6px}
+@media (max-width:900px){.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.foot-grid{grid-template-columns:1fr}}
+.no-js .preloader{display:none}
+.no-js .stage-plate--veil{opacity:.25}
+.no-js .cursor{display:none}
+@media (prefers-reduced-motion:reduce){.pre-sweep,.scroll-cue i{animation:none!important}*{scroll-behavior:auto!important}.slab-img img{transition:none}}
+/* SOUND TOGGLE */
+.sound-toggle { position: fixed; bottom: 2rem; right: 2rem; z-index: 9500; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.65rem; font-weight: 700; letter-spacing: .2em; cursor: none; transition: border-color 0.3s, color 0.3s; }
+.sound-toggle:hover { border-color: var(--ember); color: var(--ember); }
+.unmute-overlay{position:fixed;bottom:2rem;right:2rem;z-index:9500;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.25);color:#fff;padding:0.6rem 1.2rem;border-radius:999px;font-family:var(--grotesk);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:border-color 0.3s,color 0.3s,transform 0.3s;animation:pulseGlow 2s ease-in-out infinite}
+.unmute-overlay:hover{border-color:var(--ember);color:var(--ember);transform:scale(1.05)}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 8px rgba(34,197,94,0.3)}50%{box-shadow:0 0 20px rgba(34,197,94,0.6)}}
+.unmute-overlay.is-on{border-color:var(--ember);color:var(--ember)}
+@media (max-width:640px){.unmute-overlay{bottom:1.2rem;right:1.2rem;padding:0.5rem 1rem;font-size:.55rem}}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Loading YEŞİL AIR">
+  <div class="pre-inner">
+    <div class="pre-meta">
+      <span class="pre-mark">YEŞİL AIR</span>
+      <span class="pre-tag">SÜSPANSİYON & DRİFT</span>
+    </div>
+    <div class="pre-num"><span id="preCount">0</span><i>%</i></div>
+    <div class="pre-rail"><span class="pre-fill" id="preFill"></span><span class="pre-sweep"></span></div>
+    <p class="pre-status" id="preStatus">STÜDYO IŞIKLARI KALİBRE EDİLİYOR</p>
+  </div>
+  <div class="pre-shutter" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor-ring" id="cursorRing"><span class="cursor-label" id="cursorLabel"></span></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+</div>
+
+<!-- HUD -->
+<div class="hud" aria-hidden="true">
+  <div class="hud-progress"><span class="hud-progress-fill" id="hudProgress"></span></div>
+  <span class="hud-edge hud-edge--l">YEŞİL AIR SÜSPANSİYON — EST. 2020 / TÜRKİYE</span>
+  <span class="hud-edge hud-edge--r">KAYDIR</span>
+</div>
+
+<header class="topbar">
+  <a class="brand" href="#top" data-cursor="TOP" aria-label="YEŞİL AIR — ana sayfa">
+    <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M2 4 L12 21 L22 4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M7.4 4 L12 12 L16.6 4" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".45"/>
+    </svg>
+    <span class="brand-word">YEŞİL AIR</span>
+  </a>
+  <nav class="topnav" aria-label="Ana Menü">
+    <a href="#specs" data-cursor="BAK">Teknik</a>
+    <a href="#drive" data-cursor="BAK">Drift</a>
+    <a href="#gallery" data-cursor="BAK">Detay</a>
+    <a class="topnav-cta" href="#reserve" data-cursor="TIKLA">Randevu Al</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- 01 HERO VIDEO -->
+  <section class="reveal" id="reveal" aria-labelledby="revealTitle">
+    <div class="reveal-stage" id="revealStage">
+      <div class="stage-media" data-media="reveal">
+        <video class="stage-plate-video stage-plate--under" id="heroVideo" autoplay muted playsinline>
+          <source src="file:///c:/Users/cemas/Desktop/yesilir-web/hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="stage-vig" aria-hidden="true"></div>
+      </div>
+
+      <div class="reveal-copy">
+        <p class="kicker" data-anim="kicker"><i class="dot"></i>YEŞİL AIR — SÜSPANSIYON & DRİFT</p>
+        <h1 class="display display--hero" id="revealTitle">
+          <span class="line" data-split>ASFALTA</span>
+          <span class="line line--mix" data-split><em>hükmet</em></span>
+        </h1>
+        <p class="lede">Air süspansiyon ve coilover sistemlerinde milimetrik hassasiyet. Aracınızın duruşunu baştan yaratıyoruz. Sıradanlığı reddediyoruz.</p>
+      </div>
+
+      <ul class="edge-stats" aria-hidden="true">
+        <li class="edge-stat edge-stat--tl"><b>500<span>+</span></b><span>MUTLU MÜŞTERİ</span></li>
+        <li class="edge-stat edge-stat--tr"><b>7<span>YIL</span></b><span>TECRÜBE</span></li>
+        <li class="edge-stat edge-stat--bl"><b>Ø</b><span>UZLAŞMA YOK</span></li>
+      </ul>
+
+      <div class="reveal-trio" aria-hidden="true">
+        <span>AGRESSIVE</span><span>STANCE</span><span>DRIFT</span>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true"><span>KAYDIR</span><i></i></div>
+    </div>
+  </section>
+
+  <!-- 02 SPEC STRIP -->
+  <section class="specs" id="specs" aria-labelledby="specsTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker"><i class="dot"></i>02 — TEKNİK VERİLER</p>
+        <h2 class="sec-title" id="specsTitle">Rakamlarla<br><em>yeşil</em> fark.</h2>
+        <p class="sec-note">Dinamometre testleri, pist verileri ve gerçek dünya ölçümleri. Hiçbir şeyi yuvarlamadık.</p>
+      </div>
+      <ol class="spec-row">
+        <li class="spec">
+          <span class="spec-idx">01</span>
+          <b class="spec-fig"><span class="count" data-count="500" data-dec="0">0</span><i>+</i></b>
+          <span class="spec-unit">ARAÇ</span>
+          <span class="spec-label">Tamamlanmış proje sayısı</span>
+        </li>
+        <li class="spec">
+          <span class="spec-idx">02</span>
+          <b class="spec-fig"><span class="count" data-count="0.5" data-dec="1">0</span><i>mm</i></b>
+          <span class="spec-unit">HASSAS AYAR</span>
+          <span class="spec-label">Milimetrik yükseklik kontrolü</span>
+        </li>
+        <li class="spec">
+          <span class="spec-idx">03</span>
+          <b class="spec-fig"><span class="count" data-count="32" data-dec="0">0</span></b>
+          <span class="spec-unit">FARKLI MARKA</span>
+          <span class="spec-label">BMW, Mercedes, Audi, VW ve daha fazlası</span>
+        </li>
+        <li class="spec">
+          <span class="spec-idx">04</span>
+          <b class="spec-fig"><span class="count" data-count="7" data-dec="0">0</span><i>gün</i></b>
+          <span class="spec-unit">TESLİMAT</span>
+          <span class="spec-label">Ortalama proje tamamlama süresi</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 03 DRIVE -->
+  <section class="drive" id="drive" aria-labelledby="driveTitle">
+    <div class="drive-stage" id="driveStage">
+      <div class="stage-media" data-media="drive">
+        <video class="stage-plate-video" id="drivePlate" autoplay muted playsinline>
+          <source src="file:///c:/Users/cemas/Desktop/yesilir-web/drive-video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <h2 class="drive-word" id="driveWord" aria-hidden="true"><span>DRİFT</span></h2>
+      <h2 class="sr-only" id="driveTitle">YEŞİL AIR Drift Performansı</h2>
+      <div class="stage-vig stage-vig--soft" aria-hidden="true"></div>
+      <div class="drive-cards" id="driveCards">
+        <article class="gcard">
+          <p class="gcard-k">AIR RIDE</p>
+          <b class="gcard-fig">∞</b>
+          <p class="gcard-sub">Sonsuz yükseklik ayarı. Telefonunuzdan kumanda. Bir düğmeyle asfalt seviyesi.</p>
+        </article>
+        <article class="gcard">
+          <p class="gcard-k">COILOVER</p>
+          <b class="gcard-fig">36<i>YOL</i></b>
+          <p class="gcard-sub">36 kademe sönümleme ayarı. Pist veya cadde — tek amortisör, iki karakter.</p>
+        </article>
+        <article class="gcard">
+          <p class="gcard-k">STANCE</p>
+          <b class="gcard-fig">-4<i>°</i></b>
+          <p class="gcard-sub">Kamber. Mükemmel fitment. Aracınızın duruşu sanat eserine dönüşür.</p>
+        </article>
+      </div>
+      <p class="drive-caption" aria-hidden="true">YEŞİL AIR — GECE SÜRÜŞÜ — TÜRKİYE</p>
+    </div>
+  </section>
+
+  <!-- 04 DETAIL GALLERY -->
+  <section class="gallery" id="gallery" aria-labelledby="galleryTitle">
+    <div class="gallery-pin" id="galleryPin">
+      <div class="gallery-head">
+        <p class="kicker"><i class="dot"></i>04 — DETAY</p>
+        <h2 class="sec-title sec-title--sm" id="galleryTitle">Her detayda<br><em>mühendislik</em> var.</h2>
+      </div>
+      <div class="gallery-track" id="galleryTrack">
+        <figure class="slab">
+          <span class="slab-idx">01</span>
+          <div class="slab-img"><img src="file:///C:/Users/cemas/.gemini/antigravity-ide/brain/60fb4901-f9fb-48a5-9a6a-37a7e4fda8ab/red_bmw_studio_1788205466099.jpg" alt="Kırmızı BMW sürüş esnasında." loading="lazy"></div>
+          <figcaption><b>KIRMIZI BMW 3 SERİSİ</b><span>Dinamik sürüş performansı ve agresif aerodinamik tasarımın yoldaki dansı.</span></figcaption>
+        </figure>
+        <figure class="slab">
+          <span class="slab-idx">02</span>
+          <div class="slab-img"><img src="file:///C:/Users/cemas/.gemini/antigravity-ide/brain/60fb4901-f9fb-48a5-9a6a-37a7e4fda8ab/white_bmw_custom_studio_1788205481538.jpg" alt="Beyaz BMW graffiti önünde." loading="lazy"></div>
+          <figcaption><b>BEYAZ BMW CUSTOM</b><span>Şehir sokaklarında, sokak sanatı ile bütünleşen özel süspansiyon ayarları.</span></figcaption>
+        </figure>
+        <figure class="slab">
+          <span class="slab-idx">03</span>
+          <div class="slab-img"><img src="file:///C:/Users/cemas/.gemini/antigravity-ide/brain/60fb4901-f9fb-48a5-9a6a-37a7e4fda8ab/white_bmw_5_studio_1788205495126.jpg" alt="Beyaz BMW 5 serisi." loading="lazy"></div>
+          <figcaption><b>BMW 5 SERİSİ STANCE</b><span>Zarafet ve gücün buluştuğu nokta. Yere sıfır duruşuyla dikkat çeken premium detaylar.</span></figcaption>
+        </figure>
+        <figure class="slab">
+          <span class="slab-idx">04</span>
+          <div class="slab-img"><img src="file:///C:/Users/cemas/.gemini/antigravity-ide/brain/60fb4901-f9fb-48a5-9a6a-37a7e4fda8ab/blue_bmw_studio_1788205509397.jpg" alt="Mavi BMW dağ yolunda." loading="lazy"></div>
+          <figcaption><b>MAVİ BMW ESTETİĞİ</b><span>Göz alıcı renk, kusursuz hatlar ve özel jantlarla tamamlanan stance kültürü.</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery-rail" aria-hidden="true"><span id="galleryRailFill"></span></div>
+    </div>
+  </section>
+
+  <!-- 06 OUTRO -->
+  <section class="outro" id="outro" aria-labelledby="outroTitle">
+    <div class="outro-pin" id="outroPin">
+      <div class="outro-bg" id="outroBg">
+        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=2000&q=80" alt="" aria-hidden="true">
+      </div>
+      <div class="stage-vig" aria-hidden="true"></div>
+      <p class="outro-kicker" aria-hidden="true">ŞİMDİYE KADAR — HİÇBİR ŞEY BİZİ</p>
+      <h2 class="outro-word" id="outroTitle"><span class="sr-only">Durduramadı</span><span class="outro-letters" id="outroLetters" aria-hidden="true">DURDURAMADI</span></h2>
+      <p class="outro-sub">Yüzlerce proje. Düzinelerce marka. Asla sıradan olmadık.<br>Aracınızın potansiyelini sonuna kadar zorluyoruz.</p>
+    </div>
+  </section>
+
+  <!-- 07 RESERVE -->
+  <section class="reserve" id="reserve" aria-labelledby="reserveTitle">
+    <div class="wrap reserve-wrap">
+      <p class="kicker"><i class="dot"></i>07 — RANDEVU</p>
+      <h2 class="sec-title" id="reserveTitle">Hayalindeki aracı<br><em>birlikte</em> yaratacağız.</h2>
+      <p class="sec-note">Ücretsiz keşif görüşmesi ile projenizi planlayalım. Air ride, coilover veya tam custom — hepsinde yanınızdayız.</p>
+      <a class="bigcta" href="https://www.instagram.com/yesilair" target="_blank" data-cursor="TIKLA">
+        <span class="bigcta-l">RANDEVU&nbsp;AL</span>
+        <span class="bigcta-a" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+        </span>
+      </a>
+      <ul class="reserve-meta">
+        <li><b>KONUM</b><span>Türkiye</span></li>
+        <li><b>İLETİŞİM</b><span>Instagram: @yesilair</span></li>
+        <li><b>TESLİMAT</b><span>Ortalama 7 gün</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <span>AGRESSIVE <i>◆</i> STANCE <i>◆</i> DRIFT <i>◆</i> YEŞİL AIR SÜSPANSİYON <i>◆</i> </span>
+      <span>AGRESSIVE <i>◆</i> STANCE <i>◆</i> DRIFT <i>◆</i> YEŞİL AIR SÜSPANSİYON <i>◆</i> </span>
+    </div>
+  </div>
+  <div class="wrap foot-grid">
+    <div class="foot-col">
+      <p class="foot-mark">YEŞİL AIR</p>
+      <p class="foot-fine">Air süspansiyon ve coilover sistemlerinde Türkiye'nin zirvesi. 2020'den beri.</p>
+    </div>
+    <nav class="foot-col" aria-label="Footer">
+      <p class="foot-h">Hizmetler</p>
+      <a href="#specs" data-cursor="BAK">Air Ride</a>
+      <a href="#drive" data-cursor="BAK">Coilover</a>
+      <a href="#gallery" data-cursor="BAK">Stance & Drift</a>
+    </nav>
+    <div class="foot-col">
+      <p class="foot-h">İletişim</p>
+      <a href="https://www.instagram.com/yesilair" target="_blank" data-cursor="TIKLA">@yesilair</a>
+    </div>
+    <div class="foot-col foot-col--end">
+      <p class="foot-h">Yasal</p>
+      <p class="foot-fine">Tüm hakları saklıdır.</p>
+      <p class="foot-fine foot-fine--dim">© 2025 YEŞİL AIR SÜSPANSİYON</p>
+    </div>
+  </div>
+</footer>
+
+<button class="unmute-overlay" id="unmuteBtn" data-cursor="TIKLA">🔇 SESİ AÇ</button>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/split-type"></script>
+
+<script>
+(function(){
+'use strict';
+var $=function(s,c){return(c||document).querySelector(s)};
+var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+var hasGSAP=typeof window.gsap!=='undefined';
+var REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(hasGSAP){gsap.registerPlugin(ScrollTrigger);gsap.config({nullTargetWarn:false});if(window.ScrollToPlugin)gsap.registerPlugin(ScrollToPlugin)}
+var EASE='power3.out';
+
+/* SMOOTH SCROLL */
+var lenis=null;
+function initLenis(){
+if(typeof window.Lenis==='undefined'||REDUCED)return;
+lenis=new Lenis({duration:1.15,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true,touchMultiplier:1.6});
+if(hasGSAP){lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(function(time){lenis.raf(time*1000)});gsap.ticker.lagSmoothing(0)}
+else{var raf=function(t){lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}
+}
+
+/* CURSOR */
+function initCursor(){
+var dot=$('#cursorDot'),ring=$('#cursorRing'),label=$('#cursorLabel');
+if(!dot||!ring)return;
+if(window.matchMedia('(hover:none),(pointer:coarse)').matches)return;
+var mx=window.innerWidth/2,my=window.innerHeight/2,dx=mx,dy=my,rx=mx,ry=my,shown=false;
+window.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;if(!shown){shown=true;dot.style.opacity='1';ring.style.opacity='1'}},{passive:true});
+document.addEventListener('mouseleave',function(){dot.style.opacity='0';ring.style.opacity='0';shown=false});
+(function loop(){dx+=(mx-dx)*.36;dy+=(my-dy)*.36;rx+=(mx-rx)*.13;ry+=(my-ry)*.13;dot.style.transform='translate3d('+dx+'px,'+dy+'px,0)';ring.style.transform='translate3d('+rx+'px,'+ry+'px,0)';requestAnimationFrame(loop)})();
+var targets='a, button, [data-cursor]';
+document.addEventListener('mouseover',function(e){var t=e.target.closest?e.target.closest(targets):null;if(!t)return;ring.classList.add('is-active');label.textContent=t.getAttribute('data-cursor')||''});
+document.addEventListener('mouseout',function(e){var t=e.target.closest?e.target.closest(targets):null;if(!t)return;if(e.relatedTarget&&t.contains(e.relatedTarget))return;ring.classList.remove('is-active');label.textContent=''});
+}
+
+/* PRELOADER */
+var HERO_IMAGES=['file:///C:/Users/cemas/.gemini/antigravity-ide/brain/60fb4901-f9fb-48a5-9a6a-37a7e4fda8ab/red_bmw_studio_1788205466099.jpg','file:///C:/Users/cemas/.gemini/antigravity-ide/brain/60fb4901-f9fb-48a5-9a6a-37a7e4fda8ab/white_bmw_custom_studio_1788205481538.jpg','file:///C:/Users/cemas/.gemini/antigravity-ide/brain/60fb4901-f9fb-48a5-9a6a-37a7e4fda8ab/white_bmw_5_studio_1788205495126.jpg','file:///C:/Users/cemas/.gemini/antigravity-ide/brain/60fb4901-f9fb-48a5-9a6a-37a7e4fda8ab/blue_bmw_studio_1788205509397.jpg'];
+var STATUS=['STÜDYO IŞIKLARI KALİBRE EDİLİYOR','SÜSPANSİYON AYARLANIYOR','BODY KİT KONTROL EDİLİYOR','ÖRTÜ KALDIRILIYOR'];
+function preload(){
+var loaded=0,total=HERO_IMAGES.length,shown=0;
+var numEl=$('#preCount'),fillEl=$('#preFill'),statusEl=$('#preStatus');
+function paint(){
+var real=loaded/total;shown+=(real-shown)*.18;var pct=Math.min(99,Math.round(shown*100));
+if(numEl)numEl.textContent=pct;if(fillEl)fillEl.style.width=pct+'%';
+if(statusEl){var s=STATUS[Math.min(STATUS.length-1,Math.floor(shown*STATUS.length))];if(statusEl.textContent!==s)statusEl.textContent=s}
+if(loaded<total||pct<99){schedule(paint)}else{if(numEl)numEl.textContent='100';if(fillEl)fillEl.style.width='100%';finish()}
+}
+schedule(paint);
+HERO_IMAGES.forEach(function(src){var img=new Image();var bump=function(){loaded++};img.onload=bump;img.onerror=bump;img.src=src;if(img.decode){img.decode().catch(function(){})}});
+setTimeout(function(){loaded=total},9000);
+}
+var booted=false;
+function finish(){
+if(booted)return;booted=true;var pre=$('#preloader');
+splitHeadline();var hero=hasGSAP?heroIntro():null;
+var go=function(){if(pre)pre.setAttribute('hidden','');document.body.classList.add('is-ready');buildScroll();if(hasGSAP)ScrollTrigger.refresh();if(hero)hero.play()};
+if(!hasGSAP||REDUCED){if(pre)pre.style.display='none';go();return}
+var slats=$$('.pre-shutter i');
+gsap.timeline().to('.pre-inner',{opacity:0,y:-18,duration:.3,ease:'power2.in'}).set(pre,{background:'transparent'}).set(slats,{scaleY:1,transformOrigin:'bottom'}).to(slats,{scaleY:0,transformOrigin:'top',duration:.62,ease:'power4.inOut',stagger:.055},'>-0.02').add(go,'<0.12');
+}
+
+/* HERO INTRO */
+var splitDone=false;
+function splitHeadline(){if(splitDone)return;splitDone=true;if(typeof window.SplitType==='undefined')return;$$('[data-split]').forEach(function(el){try{var s=new SplitType(el,{types:'chars',tagName:'span'});s.chars.forEach(function(c){c.classList.add('hchar')})}catch(e){}})}
+function heroIntro(){
+if(!hasGSAP)return null;var chars=$$('.display--hero .hchar');var tl=gsap.timeline({defaults:{ease:EASE},paused:true});
+if(REDUCED){gsap.set(chars.length?chars:'.display--hero .line',{yPercent:0,opacity:1});gsap.set(['.topbar','.reveal-copy .kicker','.reveal-copy .lede','.edge-stat','.reveal-trio span','.scroll-cue'],{opacity:1,y:0});return tl}
+if(chars.length){tl.from(chars,{yPercent:118,duration:1.05,stagger:.018},0)}else{tl.from('.display--hero .line',{yPercent:110,duration:1,stagger:.08},0)}
+tl.from('.reveal-copy .kicker',{opacity:0,y:14,duration:.7},.15).from('.reveal-copy .lede',{opacity:0,y:16,duration:.8},.5).from('.edge-stat',{opacity:0,y:12,duration:.7,stagger:.09},.35).from('.reveal-trio span',{opacity:0,x:18,duration:.6,stagger:.08},.55).from('.scroll-cue',{opacity:0,duration:.6},.9).from('.stage-bars i',{scaleX:0,opacity:0,duration:1.2,stagger:.12},0).to('.topbar',{opacity:1,y:0,duration:.7},.1);
+return tl;
+}
+
+/* SCROLL CHOREOGRAPHY */
+function buildScroll(){
+initMarquee();buildOutroLetters();
+if(!hasGSAP){runCounters(true);return}
+gsap.to('#hudProgress',{scaleX:1,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.4}});
+runCounters(REDUCED);
+var mm=gsap.matchMedia();
+mm.add('(prefers-reduced-motion:reduce)',function(){gsap.set('.stage-plate--under',{scale:1});gsap.set('.gcard',{opacity:1,y:0,clipPath:'inset(0% 0% 0% 0%)'});gsap.set('#driveWord',{xPercent:0,scale:1,opacity:1});gsap.set('.outro-letters .ch',{yPercent:0,opacity:1,rotateX:0});gsap.set('.outro-bg',{yPercent:0,scale:1});gsap.set('.slab',{opacity:1,y:0})});
+
+mm.add('(min-width:901px) and (prefers-reduced-motion:no-preference)',function(){
+var kills=[];
+var revealTL=gsap.timeline({scrollTrigger:{trigger:'#reveal',start:'top top',end:'+=200%',pin:'#revealStage',pinSpacing:true,scrub:1}});
+revealTL.to('.stage-plate--under',{scale:1,ease:'none',duration:.86},0).to('.display--hero .hchar',{yPercent:-110,opacity:0,stagger:{each:.006,from:'start'},ease:'power2.in',duration:.22},.66).to(['.reveal-copy .kicker','.reveal-copy .lede'],{opacity:0,y:-20,duration:.16},.66).to('.scroll-cue',{opacity:0,duration:.1},.04).fromTo('.reveal-trio span',{color:'rgba(255,255,255,.46)'},{color:'#22c55e',stagger:.1,duration:.2,ease:'none'},.5).to('.reveal-stage',{opacity:.15,duration:.14,ease:'none'},.86);
+kills.push(revealTL);
+
+var driveTL=gsap.timeline({scrollTrigger:{trigger:'#drive',start:'top top',end:'+=320%',pin:'#driveStage',pinSpacing:true,scrub:1}});
+driveTL.fromTo('#drivePlate',{scale:1.16},{scale:1,ease:'none',duration:1},0).fromTo('#driveWord',{xPercent:22,scale:1.22,opacity:0},{opacity:1,duration:.12,ease:'none'},.02).to('#driveWord',{xPercent:-22,scale:1,ease:'none',duration:.92},.04).fromTo('.gcard',{yPercent:42,opacity:0,clipPath:'inset(0% 0% 100% 0%)'},{yPercent:0,opacity:1,clipPath:'inset(0% 0% 0% 0%)',stagger:.07,duration:.2,ease:'power2.out'},.52).fromTo('.drive-caption',{opacity:0},{opacity:1,duration:.08},.14);
+kills.push(driveTL);
+
+var track=$('#galleryTrack'),galleryTL=null;
+if(track){var shift=function(){return Math.max(0,track.scrollWidth-window.innerWidth+24)};galleryTL=gsap.to(track,{x:function(){return-shift()},ease:'none',scrollTrigger:{trigger:'#gallery',start:'top top',end:function(){return'+='+(shift()+window.innerHeight*.6)},pin:'#galleryPin',pinSpacing:true,scrub:1,invalidateOnRefresh:true,onUpdate:function(self){gsap.set('#galleryRailFill',{scaleX:.08+self.progress*.92})}}});kills.push(galleryTL)}
+
+var outroTL=gsap.timeline({scrollTrigger:{trigger:'#outro',start:'top top',end:'+=220%',pin:'#outroPin',pinSpacing:true,scrub:1}});
+outroTL.fromTo('.outro-bg',{yPercent:12,scale:1.1},{yPercent:-6,scale:1,ease:'none',duration:1},0).fromTo('.outro-letters .ch',{yPercent:108,opacity:0},{yPercent:0,opacity:1,stagger:.055,duration:.34,ease:'power3.out'},.05).fromTo('.outro-kicker',{opacity:0,letterSpacing:'.16em'},{opacity:1,letterSpacing:'.36em',duration:.25},.1).fromTo('.outro-sub',{opacity:0,y:22},{opacity:1,y:0,duration:.22},.62);
+kills.push(outroTL);
+
+var reveals=[['#specs .sec-head > *','#specs'],['#config .config-head > *','#config'],['.reserve-wrap > *','#reserve'],['.foot-col','.foot-grid']];
+reveals.forEach(function(pair){var els=$$(pair[0]);if(!els.length)return;var t=gsap.from(els,{opacity:0,y:34,duration:.9,stagger:.07,ease:EASE,scrollTrigger:{trigger:pair[1],start:'top 78%',once:true}});kills.push(t)});
+gsap.from('.spec',{opacity:0,y:40,duration:.9,stagger:.09,ease:EASE,scrollTrigger:{trigger:'.spec-row',start:'top 82%',once:true}});
+return function(){kills.forEach(function(t){if(t&&t.scrollTrigger)t.scrollTrigger.kill();if(t)t.kill()})};
+});
+
+mm.add('(max-width:900px) and (prefers-reduced-motion:no-preference)',function(){
+var kills=[];
+var t1=gsap.timeline({scrollTrigger:{trigger:'#reveal',start:'top top',end:'bottom top',scrub:.8}});
+t1.to('#veilPlate',{yPercent:-60,scale:1.3,opacity:0,ease:'power1.in',duration:.7},0).to('.stage-plate--under',{scale:1,ease:'none',duration:1},0);kills.push(t1);
+var t2=gsap.timeline({scrollTrigger:{trigger:'#drive',start:'top bottom',end:'bottom top',scrub:.8}});
+t2.fromTo('#drivePlate',{scale:1.14},{scale:1,ease:'none',duration:1},0).fromTo('#driveWord',{xPercent:14},{xPercent:-14,ease:'none',duration:1},0);kills.push(t2);
+var t3=gsap.from('.gcard',{opacity:0,y:24,stagger:.08,duration:.7,ease:EASE,scrollTrigger:{trigger:'#drive',start:'top 30%',once:true}});kills.push(t3);
+gsap.set('#galleryTrack',{clearProps:'transform'});
+var t4=gsap.from('.slab',{opacity:0,y:36,duration:.8,stagger:.1,ease:EASE,scrollTrigger:{trigger:'#gallery',start:'top 80%',once:true}});kills.push(t4);
+var t5=gsap.from('.outro-letters .ch',{yPercent:100,opacity:0,stagger:.04,duration:.7,ease:EASE,scrollTrigger:{trigger:'#outro',start:'top 70%',once:true}});kills.push(t5);
+gsap.set(['.outro-kicker','.outro-sub'],{opacity:1});
+[['#specs .sec-head > *','#specs'],['.spec','.spec-row'],['.reserve-wrap > *','#reserve']].forEach(function(pair){var els=$$(pair[0]);if(!els.length)return;kills.push(gsap.from(els,{opacity:0,y:26,duration:.8,stagger:.07,ease:EASE,scrollTrigger:{trigger:pair[1],start:'top 85%',once:true}}))});
+return function(){kills.forEach(function(t){if(t&&t.scrollTrigger)t.scrollTrigger.kill();if(t)t.kill()})};
+});
+
+$$('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var id=a.getAttribute('href');if(!id||id==='#')return;var el=document.querySelector(id);if(!el)return;e.preventDefault();if(lenis)lenis.scrollTo(el,{offset:0,duration:1.3});else el.scrollIntoView()})});
+window.addEventListener('resize',debounce(function(){ScrollTrigger.refresh()},220),{passive:true});
+}
+
+/* COUNT-UPS */
+var countersRun=false;
+function runCounters(instant){
+if(countersRun)return;countersRun=true;
+$$('.count').forEach(function(el){var to=parseFloat(el.getAttribute('data-count'))||0;var dec=parseInt(el.getAttribute('data-dec'),10)||0;var fmt=function(v){return dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US')};if(instant||!hasGSAP){el.textContent=fmt(to);return}var obj={v:0};gsap.to(obj,{v:to,duration:2.1,ease:'power2.out',onUpdate:function(){el.textContent=fmt(obj.v)},scrollTrigger:{trigger:el,start:'top 88%',once:true}})});
+}
+
+/* OUTRO LETTERS */
+function buildOutroLetters(){var host=$('#outroLetters');if(!host)return;var word=host.textContent.trim();host.textContent='';word.split('').forEach(function(ch){var wrap=document.createElement('span');wrap.style.overflow='hidden';wrap.style.display='inline-block';wrap.style.paddingBottom='.06em';var inner=document.createElement('span');inner.className='ch';inner.textContent=ch;wrap.appendChild(inner);host.appendChild(wrap)})}
+
+/* MARQUEE */
+function initMarquee(){var track=$('#marqueeTrack');if(!track||!hasGSAP||REDUCED)return;gsap.to(track,{xPercent:-50,duration:26,ease:'none',repeat:-1})}
+
+/* UTILS */
+function schedule(fn){if(document.visibilityState==='hidden')setTimeout(fn,32);else requestAnimationFrame(fn)}
+function debounce(fn,ms){var t;return function(){var a=arguments,self=this;clearTimeout(t);t=setTimeout(function(){fn.apply(self,a)},ms)}}
+
+/* 3D PARALLAX & MAGNETIC BTN & SOUND */
+function initInteractiveExtras() {
+  if (window.matchMedia('(hover:none),(pointer:coarse)').matches) return;
+  
+  // 1. Magnetic Buttons
+  var magneticTargets = $$('.topnav-cta, .bigcta');
+  magneticTargets.forEach(function(btn) {
+    btn.addEventListener('mousemove', function(e) {
+      var rect = btn.getBoundingClientRect();
+      var x = e.clientX - rect.left - rect.width / 2;
+      var y = e.clientY - rect.top - rect.height / 2;
+      gsap.to(btn, {x: x * 0.3, y: y * 0.3, duration: 0.3, ease: 'power2.out'});
+    });
+    btn.addEventListener('mouseleave', function() {
+      gsap.to(btn, {x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)'});
+    });
+  });
+
+  // 2. 3D Parallax on Stage Plates
+  var plates = $$('.stage-plate, .slab-img img');
+  window.addEventListener('mousemove', function(e) {
+    var x = (e.clientX / window.innerWidth - 0.5) * 2;
+    var y = (e.clientY / window.innerHeight - 0.5) * 2;
+    gsap.to(plates, {
+      rotationY: x * 4,
+      rotationX: -y * 4,
+      transformPerspective: 1000,
+      ease: 'power1.out',
+      duration: 0.8
+    });
+  });
+
+  // Video speed & sound
+  var heroVid = document.getElementById('heroVideo');
+  var driveVid = document.getElementById('drivePlate');
+  if(heroVid) { heroVid.playbackRate = 0.7; heroVid.play().catch(function(){}); }
+  if(driveVid) {
+    driveVid.playbackRate = 0.7;
+    driveVid.play().catch(function(){});
+    // Play when scrolled into view
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if(e.isIntersecting) { driveVid.play().catch(function(){}); }
+      });
+    }, {threshold: 0.3});
+    obs.observe(driveVid);
+  }
+
+  // Unmute button
+  var unmuteBtn = document.getElementById('unmuteBtn');
+  if(unmuteBtn) {
+    unmuteBtn.addEventListener('click', function() {
+      var isOn = !heroVid.muted;
+      if(heroVid) { heroVid.muted = !isOn ? false : true; heroVid.volume = 0.5; }
+      if(driveVid) { driveVid.muted = !isOn ? false : true; driveVid.volume = 0.3; }
+      if(!isOn) {
+        unmuteBtn.textContent = '🔊 SES AÇIK';
+        unmuteBtn.classList.add('is-on');
+      } else {
+        unmuteBtn.textContent = '🔇 SESİ AÇ';
+        unmuteBtn.classList.remove('is-on');
+      }
+    });
+  }
+}
+
+/* BOOT */
+initLenis();initCursor();initInteractiveExtras();
+if(hasGSAP&&!REDUCED){gsap.set('.topbar',{opacity:0,y:-12})}
+preload();
+window.addEventListener('load',function(){if(hasGSAP)ScrollTrigger.refresh()});
+})();
+</script>
+</body>
+</html>
