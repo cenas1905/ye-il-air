@@ -374,7 +374,7 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
   <section class="drive" id="drive" aria-labelledby="driveTitle">
     <div class="drive-stage" id="driveStage">
       <div class="stage-media" data-media="drive">
-        <video class="stage-plate-video" id="drivePlate" autoplay muted playsinline>
+        <video class="stage-plate-video" id="drivePlate" muted playsinline preload="auto">
           <source src="drive-video.mp4" type="video/mp4">
         </video>
       </div>
@@ -682,16 +682,34 @@ function initInteractiveExtras() {
   // Video speed & sound
   var heroVid = document.getElementById('heroVideo');
   var driveVid = document.getElementById('drivePlate');
-  if(heroVid) { heroVid.playbackRate = 0.7; heroVid.play().catch(function(){}); }
+  
+  function enforceSpeed(vid) {
+    if(!vid) return;
+    vid.playbackRate = 0.7;
+    vid.defaultPlaybackRate = 0.7;
+    vid.addEventListener('play', function(){ vid.playbackRate = 0.7; });
+    vid.addEventListener('loadedmetadata', function(){ vid.playbackRate = 0.7; });
+  }
+  
+  if(heroVid) {
+    enforceSpeed(heroVid);
+    heroVid.play().catch(function(){});
+  }
+  
   if(driveVid) {
-    driveVid.playbackRate = 0.7;
-    driveVid.play().catch(function(){});
-    // Play when scrolled into view
+    enforceSpeed(driveVid);
+    // Play ONLY when scrolled into view so it doesn't finish before user sees it
     var obs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
-        if(e.isIntersecting) { driveVid.play().catch(function(){}); }
+        if(e.isIntersecting) {
+          if (driveVid.ended) { driveVid.currentTime = 0; } // Restart if already ended
+          driveVid.play().catch(function(){});
+        } else {
+          // Optional: pause when out of view to save resources
+          driveVid.pause();
+        }
       });
-    }, {threshold: 0.3});
+    }, {threshold: 0.15});
     obs.observe(driveVid);
   }
 
