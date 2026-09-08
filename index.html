@@ -493,7 +493,7 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
   <section class="drive" id="drive" aria-labelledby="driveTitle">
     <div class="drive-stage" id="driveStage">
       <div class="stage-media" data-media="drive">
-        <video class="stage-plate-video" id="drivePlate" muted playsinline preload="auto">
+        <video class="stage-plate-video" id="drivePlate" autoplay muted playsinline webkit-playsinline preload="metadata">
           <source src="drive-video.mp4" type="video/mp4">
         </video>
       </div>
@@ -806,30 +806,58 @@ function initInteractiveExtras() {
     if(!vid) return;
     vid.playbackRate = 0.7;
     vid.defaultPlaybackRate = 0.7;
-    vid.addEventListener('play', function(){ vid.playbackRate = 0.7; });
+    vid.addEventListener('playing', function(){ vid.playbackRate = 0.7; });
     vid.addEventListener('loadedmetadata', function(){ vid.playbackRate = 0.7; });
+  }
+  
+  function tryPlay(vid) {
+    if(!vid) return;
+    vid.load();
+    var p = vid.play();
+    if(p && p.catch) p.catch(function(){});
   }
   
   if(heroVid) {
     enforceSpeed(heroVid);
-    heroVid.play().catch(function(){});
+    tryPlay(heroVid);
   }
   
   if(driveVid) {
     enforceSpeed(driveVid);
-    // Play ONLY when scrolled into view so it doesn't finish before user sees it
+    // Pause immediately — we'll play when user scrolls to it
+    driveVid.pause();
+    
+    var driveStarted = false;
+    function startDriveVid() {
+      if(driveVid.ended) driveVid.currentTime = 0;
+      var p = driveVid.play();
+      if(p && p.catch) p.catch(function(){});
+      driveStarted = true;
+    }
+    
+    // IntersectionObserver: play when visible, pause when not
     var obs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         if(e.isIntersecting) {
-          if (driveVid.ended) { driveVid.currentTime = 0; } // Restart if already ended
-          driveVid.play().catch(function(){});
+          startDriveVid();
         } else {
-          // Optional: pause when out of view to save resources
           driveVid.pause();
+          driveStarted = false;
         }
       });
-    }, {threshold: 0.15});
+    }, {threshold: 0.1});
     obs.observe(driveVid);
+    
+    // Mobile fallback: first touch anywhere triggers video if visible
+    document.addEventListener('touchstart', function mobileKick() {
+      if(!driveStarted) {
+        var rect = driveVid.getBoundingClientRect();
+        var inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if(inView) startDriveVid();
+      }
+      // Also ensure hero is playing
+      if(heroVid && heroVid.paused) tryPlay(heroVid);
+    }, {passive: true});
   }
 
   // Unmute button
