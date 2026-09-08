@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projelerimiz — YEŞİL AIR</title>
+<meta name="description" content="Yeşil Air Süspansiyon ve Drift projeleri, tamamlanmış araçlar ve referanslarımız.">
+<meta name="theme-color" content="#000000">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Instrument+Serif:ital@1&display=swap">
+
+<script>document.documentElement.className = document.documentElement.className.replace('no-js','js');</script>
+
+<style>
+:root{
+  --black:#000000;
+  --ink:#0A0A0B;
+  --line:rgba(255,255,255,.12);
+  --line-soft:rgba(255,255,255,.07);
+  --white:#F4F4F2;
+  --white-dim:#A9A9A6;
+  --ember:#22c55e;
+  --display:'Anton','Archivo',Impact,'Arial Narrow',sans-serif;
+  --grotesk:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --body:'Inter','Helvetica Neue',Arial,sans-serif;
+  --gut:clamp(20px,4vw,64px);
+  --maxw:1560px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--black);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.55;font-weight:300;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+
+/* TOPBAR */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px var(--gut);background:rgba(0,0,0,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05)}
+.brand{display:inline-flex;align-items:center;gap:10px}
+.brand-mark{width:20px;height:20px;color:var(--ember);flex:none}
+.brand-word{font-family:var(--display);font-size:1.02rem;letter-spacing:.38em;text-transform:uppercase;text-indent:.38em;color:var(--white)}
+.topnav{display:flex;align-items:center;gap:clamp(14px,2vw,30px)}
+.topnav a{font-family:var(--grotesk);font-size:.63rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62);transition:color .25s}
+.topnav a:hover{color:var(--white)}
+.topnav-cta{color:var(--white)!important;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 16px;transition:background .3s,border-color .3s,color .3s}
+.topnav-cta:hover{background:var(--ember);border-color:var(--ember);color:#000!important}
+@media (max-width:760px){.topnav a:not(.topnav-cta){display:none}.topbar{padding:14px var(--gut)}}
+
+/* HEADER */
+.page-header{padding:140px 0 60px;text-align:center;border-bottom:1px solid var(--line-soft)}
+.page-title{font-family:var(--display);font-weight:400;font-size:clamp(3rem,8vw,6rem);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:16px}
+.page-title em{font-family:var(--serif);font-style:italic;color:var(--ember);text-transform:lowercase;padding-inline:.04em}
+.page-desc{color:var(--white-dim);font-size:clamp(1rem,1.2vw,1.1rem);max-width:50ch;margin:0 auto;line-height:1.6}
+
+/* MASONRY GALLERY */
+.masonry-wrapper{padding:clamp(40px,6vh,80px) 0}
+.masonry-grid {
+    columns: 4 300px;
+    column-gap: 20px;
+    padding: 0;
+}
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: #111;
+}
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s var(--ease), filter 0.5s;
+    will-change: transform;
+    opacity: 0;
+}
+.masonry-item img.loaded {
+    opacity: 1;
+    transition: opacity 0.6s var(--ease), transform 0.5s var(--ease), filter 0.5s;
+}
+.masonry-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.lightbox.is-open {
+    display: flex;
+    opacity: 1;
+}
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.8);
+    transform: scale(0.95);
+    transition: transform 0.3s var(--ease);
+}
+.lightbox.is-open .lightbox-img {
+    transform: scale(1);
+}
+.lb-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    transition: background 0.3s;
+}
+.lb-close:hover {
+    background: var(--ember);
+    color: #000;
+}
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="index.html" class="brand" aria-label="Ana Sayfa">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg>
+      <span class="brand-word">YEŞİL AIR</span>
+    </a>
+    <nav class="topnav">
+      <a href="index.html#gallery">Detay</a>
+      <a href="index.html#drive">Drift</a>
+      <a href="projeler.html" style="color:var(--white)">Projeler</a>
+      <a href="tel:+905550000000" class="topnav-cta">RANDEVU AL</a>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <div class="wrap">
+      <h1 class="page-title">Tamamlanan<br><em>Projeler</em></h1>
+      <p class="page-desc">Yeşil Air dokunuşuyla tamamen baştan yaratılan 100 adet araç. Atölyemizden sokağa uzanan mükemmellik.</p>
+    </div>
+  </section>
+
+  <section class="masonry-wrapper">
+    <div class="wrap">
+      <div class="masonry-grid" id="masonryGrid">
+        <!-- JS will populate images here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <div class="lb-close" id="lbClose">&times;</div>
+    <img src="" alt="Proje detayı" class="lightbox-img" id="lbImg">
+  </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('masonryGrid');
+    const TOTAL_IMAGES = 100;
+    
+    // Create elements dynamically
+    for (let i = 1; i <= TOTAL_IMAGES; i++) {
+      let numStr = i.toString().padStart(2, '0');
+      if (i === 100) numStr = '100'; // special case if padded strictly 2 chars, but padStart(2) leaves 100 as 100.
+      
+      let imgPath = `images/portfolio/yesilair-${numStr}.jpg`;
+      
+      let item = document.createElement('div');
+      item.className = 'masonry-item';
+      
+      let img = document.createElement('img');
+      img.dataset.src = imgPath;
+      img.src = ''; 
+      img.alt = `Yeşil Air Proje ${i}`;
+      
+      item.appendChild(img);
+      grid.appendChild(item);
+    }
+
+    // Lazy load logic (Intersection Observer)
+    const images = document.querySelectorAll('.masonry-item img');
+    const imgObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.onload = () => {
+              lazyImage.classList.add('loaded');
+          };
+          obs.unobserve(lazyImage);
+        }
+      });
+    }, { rootMargin: '300px 0px' });
+
+    images.forEach(img => imgObserver.observe(img));
+
+    // Lightbox Logic
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    grid.addEventListener('click', (e) => {
+      if(e.target.tagName === 'IMG') {
+        lbImg.src = e.target.src;
+        lightbox.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    lbClose.addEventListener('click', () => {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImg.src = ''; }, 300);
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) {
+        lbClose.click();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
