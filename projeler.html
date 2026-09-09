@@ -46,7 +46,16 @@ img{display:block;max-width:100%;height:auto}
 .topnav a:hover{color:var(--white)}
 .topnav-cta{color:var(--white)!important;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 16px;transition:background .3s,border-color .3s,color .3s}
 .topnav-cta:hover{background:var(--ember);border-color:var(--ember);color:#000!important}
-@media (max-width:760px){.topnav a:not(.topnav-cta){display:none}.topbar{padding:14px var(--gut)}}
+@media (max-width:760px){
+  .topnav a:not(.topnav-cta){display:none}
+  .topbar{padding:14px var(--gut)}
+  .masonry-grid{columns:1;column-gap:0}
+  .masonry-item{margin-bottom:12px;border-radius:6px}
+  .page-header{padding:110px 0 44px}
+  .lb-close{width:44px;height:44px;top:14px;right:14px}
+  .lightbox-img{max-width:96vw}
+  .masonry-item,.topnav a,.brand,.lb-close{-webkit-tap-highlight-color:transparent}
+}
 
 /* HEADER */
 .page-header{padding:140px 0 60px;text-align:center;border-bottom:1px solid var(--line-soft)}
@@ -76,7 +85,6 @@ img{display:block;max-width:100%;height:auto}
     object-fit: cover;
     display: block;
     transition: transform 0.5s var(--ease), filter 0.5s;
-    will-change: transform;
     opacity: 0;
 }
 .masonry-item img.loaded {
@@ -218,15 +226,19 @@ img{display:block;max-width:100%;height:auto}
       let numStr = i.toString().padStart(2, '0');
       if (i === 100) numStr = '100'; // special case if padded strictly 2 chars, but padStart(2) leaves 100 as 100.
       
-      let imgPath = `images/portfolio/yesilair-${numStr}.jpg`;
+      let thumbPath = `images/portfolio/thumbs/yesilair-${numStr}.webp`;
+      let fullPath = `images/portfolio/yesilair-${numStr}.jpg`;
       
       let item = document.createElement('div');
       item.className = 'masonry-item';
       
       let img = document.createElement('img');
-      img.dataset.src = imgPath;
+      img.dataset.src = thumbPath;
+      img.dataset.full = fullPath;
       img.src = ''; 
       img.alt = `Yeşil Air Proje ${i}`;
+      img.loading = 'lazy';
+      img.decoding = 'async';
       
       item.appendChild(img);
       grid.appendChild(item);
@@ -256,7 +268,7 @@ img{display:block;max-width:100%;height:auto}
 
     grid.addEventListener('click', (e) => {
       if(e.target.tagName === 'IMG') {
-        lbImg.src = e.target.src;
+        lbImg.src = e.target.dataset.full || e.target.src;
         lightbox.classList.add('is-open');
         document.body.style.overflow = 'hidden';
       }

@@ -514,7 +514,7 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
   <section class="reveal" id="reveal" aria-labelledby="revealTitle">
     <div class="reveal-stage" id="revealStage">
       <div class="stage-media" data-media="reveal">
-        <video class="stage-plate-video stage-plate--under" id="heroVideo" autoplay muted playsinline>
+        <video class="stage-plate-video stage-plate--under" id="heroVideo" autoplay muted playsinline webkit-playsinline preload="metadata" poster="hero-video-poster.jpg">
           <source src="hero-video.mp4" type="video/mp4">
         </video>
         <div class="stage-vig" aria-hidden="true"></div>
@@ -584,7 +584,7 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
   <section class="drive" id="drive" aria-labelledby="driveTitle">
     <div class="drive-stage" id="driveStage">
       <div class="stage-media" data-media="drive">
-        <video class="stage-plate-video" id="drivePlate" autoplay muted playsinline webkit-playsinline preload="metadata">
+        <video class="stage-plate-video" id="drivePlate" autoplay muted playsinline webkit-playsinline preload="metadata" poster="drive-video-poster.jpg">
           <source src="drive-video.mp4" type="video/mp4">
         </video>
       </div>
@@ -642,22 +642,22 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
       <div class="gallery-track" id="galleryTrack">
         <figure class="slab">
           <span class="slab-idx">01</span>
-          <div class="slab-img"><img src="images/red_bmw.jpg" alt="Kırmızı BMW sürüş esnasında." loading="lazy"></div>
+          <div class="slab-img"><picture><source srcset="images/red_bmw.webp" type="image/webp"><img src="images/red_bmw.jpg" alt="Kırmızı BMW sürüş esnasında." loading="lazy"></picture></div>
           <figcaption><b>KIRMIZI BMW 3 SERİSİ</b><span>Dinamik sürüş performansı ve agresif aerodinamik tasarımın yoldaki dansı.</span></figcaption>
         </figure>
         <figure class="slab">
           <span class="slab-idx">02</span>
-          <div class="slab-img"><img src="images/white_bmw_custom.jpg" alt="Beyaz BMW graffiti önünde." loading="lazy"></div>
+          <div class="slab-img"><picture><source srcset="images/white_bmw_custom.webp" type="image/webp"><img src="images/white_bmw_custom.jpg" alt="Beyaz BMW graffiti önünde." loading="lazy"></picture></div>
           <figcaption><b>BEYAZ BMW CUSTOM</b><span>Şehir sokaklarında, sokak sanatı ile bütünleşen özel süspansiyon ayarları.</span></figcaption>
         </figure>
         <figure class="slab">
           <span class="slab-idx">03</span>
-          <div class="slab-img"><img src="images/white_bmw_5.jpg" alt="Beyaz BMW 5 serisi." loading="lazy"></div>
+          <div class="slab-img"><picture><source srcset="images/white_bmw_5.webp" type="image/webp"><img src="images/white_bmw_5.jpg" alt="Beyaz BMW 5 serisi." loading="lazy"></picture></div>
           <figcaption><b>BMW 5 SERİSİ STANCE</b><span>Zarafet ve gücün buluştuğu nokta. Yere sıfır duruşuyla dikkat çeken premium detaylar.</span></figcaption>
         </figure>
         <figure class="slab">
           <span class="slab-idx">04</span>
-          <div class="slab-img"><img src="images/blue_bmw.jpg" alt="Mavi BMW dağ yolunda." loading="lazy"></div>
+          <div class="slab-img"><picture><source srcset="images/blue_bmw.webp" type="image/webp"><img src="images/blue_bmw.jpg" alt="Mavi BMW dağ yolunda." loading="lazy"></picture></div>
           <figcaption><b>MAVİ BMW ESTETİĞİ</b><span>Göz alıcı renk, kusursuz hatlar ve özel jantlarla tamamlanan stance kültürü.</span></figcaption>
         </figure>
       </div>
