@@ -37,7 +37,7 @@ img{display:block;max-width:100%;height:auto}
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
 
 /* TOPBAR */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px var(--gut);background:rgba(0,0,0,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1002;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px var(--gut);background:rgba(0,0,0,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05)}
 .brand{display:inline-flex;align-items:center;gap:10px}
 .brand-mark{width:20px;height:20px;color:var(--ember);flex:none}
 .brand-word{font-family:var(--display);font-size:1.02rem;letter-spacing:.38em;text-transform:uppercase;text-indent:.38em;color:var(--white)}
@@ -46,9 +46,19 @@ img{display:block;max-width:100%;height:auto}
 .topnav a:hover{color:var(--white)}
 .topnav-cta{color:var(--white)!important;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 16px;transition:background .3s,border-color .3s,color .3s}
 .topnav-cta:hover{background:var(--ember);border-color:var(--ember);color:#000!important}
+/* Hamburger */
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:0;background:none;border:none;cursor:pointer;z-index:1001;-webkit-tap-highlight-color:transparent}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--white);transition:transform .3s var(--ease),opacity .3s;margin-inline:auto}
+.nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.active span:nth-child(2){opacity:0}
+.nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media (max-width:760px){
-  .topnav a:not(.topnav-cta){display:none}
   .topbar{padding:14px var(--gut)}
+  .nav-toggle{display:flex}
+  .topnav{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:rgba(5,6,8,.96);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+  .topnav.open{display:flex}
+  .topnav a{font-size:1.05rem;color:var(--white);letter-spacing:.26em}
+  .topnav-cta{padding:12px 30px;font-size:.68rem}
   .masonry-grid{columns:1;column-gap:0}
   .masonry-item{margin-bottom:12px;border-radius:6px}
   .page-header{padding:110px 0 44px}
@@ -187,7 +197,10 @@ img{display:block;max-width:100%;height:auto}
       <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg>
       <span class="brand-word">YEŞİL AIR</span>
     </a>
-    <nav class="topnav">
+    <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="topnav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="topnav" id="topnav">
       <a href="index.html#gallery">Detay</a>
       <a href="index.html#drive">Drift</a>
       <a href="projeler.html" style="color:var(--white)">Projeler</a>
@@ -288,5 +301,25 @@ img{display:block;max-width:100%;height:auto}
   });
 </script>
 
+<script>
+(function () {
+  var navToggle = document.getElementById('navToggle');
+  var topnav = document.getElementById('topnav');
+  if (!navToggle || !topnav) return;
+  function closeNav() {
+    topnav.classList.remove('open');
+    navToggle.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  navToggle.addEventListener('click', function () {
+    var open = topnav.classList.toggle('open');
+    navToggle.classList.toggle('active', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  topnav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeNav); });
+})();
+</script>
 </body>
 </html>
