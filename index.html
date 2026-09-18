@@ -218,10 +218,19 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
 @media (max-width:900px){.gallery-pin{height:auto;min-height:0;padding:clamp(70px,11vh,130px) 0}.gallery-track{flex-direction:column;gap:clamp(40px,7vh,70px);transform:none!important}.slab{width:100%}.gallery-rail{display:none}}
 
 /* 05 NEWS — ATÖLYEDEN SON GELİŞMELER */
-.news{position:relative;background:var(--black);padding:clamp(80px,14vh,160px) 0;border-top:1px solid var(--line-soft)}
-.news .sec-head{margin-bottom:clamp(36px,6vh,64px)}
-.news-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
-.news-card{display:flex;flex-direction:column;border:1px solid var(--line-soft);background:var(--ink-2);border-radius:12px;overflow:hidden;transition:border-color .35s,transform .5s var(--ease)}
+.news{--ngap:clamp(14px,1.6vw,22px);position:relative;background:var(--black);padding:clamp(80px,14vh,160px) 0;border-top:1px solid var(--line-soft)}
+.news-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(32px,5.5vh,58px)}
+.news .sec-head{margin-bottom:0}
+.news-arrows{display:flex;gap:10px;flex:none;align-items:center}
+.news-arrow{width:52px;height:52px;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:grid;place-items:center;color:var(--white);cursor:pointer;background:rgba(255,255,255,.02);transition:border-color .3s,color .3s,background .3s,opacity .3s,transform .3s}
+.news-arrow svg{width:20px;height:20px}
+.news-arrow:hover:not([disabled]){border-color:var(--ember);color:var(--ember);background:rgba(34,197,94,.1)}
+.news-arrow:active:not([disabled]){transform:scale(.94)}
+.news-arrow[disabled]{opacity:.25;cursor:default}
+.news-viewport{overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none}
+.news-viewport::-webkit-scrollbar{display:none}
+.news-track{display:flex;gap:var(--ngap);width:max-content}
+.news-card{width:clamp(300px,26vw,440px);flex:none;scroll-snap-align:start;display:flex;flex-direction:column;border:1px solid var(--line-soft);background:var(--ink-2);border-radius:12px;overflow:hidden;transition:border-color .35s,transform .5s var(--ease)}
 .news-card:hover{border-color:rgba(34,197,94,.45);transform:translateY(-4px)}
 .news-card>a{display:flex;flex-direction:column;height:100%}
 .news-thumb{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--ink-3)}
@@ -236,8 +245,7 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
 .news-link svg{width:13px;height:13px;flex:none}
 .news-more{margin-top:clamp(32px,5vh,52px);text-align:center}
 .news-more .topnav-cta{font-family:var(--grotesk);font-weight:700;letter-spacing:.12em;display:inline-flex;align-items:center;gap:10px;color:var(--white)!important}
-@media (max-width:1024px){.news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.news-grid{grid-template-columns:1fr}.news-title{font-size:.94rem}}
+@media (max-width:620px){.news-head-row{flex-direction:column;align-items:flex-start;gap:20px}.news-arrow{width:46px;height:46px}.news-card{width:86vw}.news-title{font-size:.94rem}}
 
 /* 06 OUTRO */
 .outro{position:relative;background:var(--black)}
@@ -735,12 +743,23 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
   <!-- 05 ATÖLYEDEN SON GELİŞMELER -->
   <section class="news" id="news" aria-labelledby="newsTitle">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="kicker"><i class="dot"></i>05 — ATÖLYEDEN</p>
-        <h2 class="sec-title" id="newsTitle">Son<br><em>gelişmeler</em>.</h2>
-        <p class="sec-note">Atölyeden ve pistten taze haberler. Instagram'da paylaştığımız son işleri ve projeleri buradan takip edin.</p>
+      <div class="news-head-row">
+        <div class="sec-head">
+          <p class="kicker"><i class="dot"></i>05 — ATÖLYEDEN</p>
+          <h2 class="sec-title" id="newsTitle">Son<br><em>gelişmeler</em>.</h2>
+          <p class="sec-note">Atölyeden ve pistten taze haberler. Instagram'da paylaştığımız son işleri ve projeleri buradan takip edin.</p>
+        </div>
+        <div class="news-arrows" aria-label="Gelişmeler arasında gezin">
+          <button class="news-arrow news-arrow--prev" type="button" aria-label="Önceki">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <button class="news-arrow news-arrow--next" type="button" aria-label="Sonraki">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
       </div>
-      <div class="news-grid">
+      <div class="news-viewport">
+        <div class="news-track">
         <article class="news-card">
           <a href="https://www.instagram.com/tezcanates/reel/DdWl9REAXRt/" target="_blank" rel="noopener" aria-label="VW Scirocco T'Series projesi — Instagram'da aç">
             <div class="news-thumb">
@@ -853,6 +872,7 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
             </div>
           </a>
         </article>
+        </div>
       </div>
       <div class="news-more">
         <a href="https://www.instagram.com/yesilair" target="_blank" rel="noopener" class="topnav-cta" data-cursor="TIKLA">
@@ -1042,7 +1062,7 @@ kills.push(outroTL);
 var reveals=[['#specs .sec-head > *','#specs'],['#config .config-head > *','#config'],['.news .sec-head > *','#news'],['.reserve-wrap > *','#reserve'],['.foot-col','.foot-grid']];
 reveals.forEach(function(pair){var els=$$(pair[0]);if(!els.length)return;var t=gsap.from(els,{opacity:0,y:34,duration:.9,stagger:.07,ease:EASE,scrollTrigger:{trigger:pair[1],start:'top 78%',once:true}});kills.push(t)});
 gsap.from('.spec',{opacity:0,y:40,duration:.9,stagger:.09,ease:EASE,scrollTrigger:{trigger:'.spec-row',start:'top 82%',once:true}});
-gsap.from('.news-card',{opacity:0,y:36,duration:.8,stagger:.07,ease:EASE,scrollTrigger:{trigger:'.news-grid',start:'top 82%',once:true}});
+gsap.from('.news-card',{opacity:0,y:36,duration:.8,stagger:.07,ease:EASE,scrollTrigger:{trigger:'.news-track',start:'top 82%',once:true}});
 return function(){kills.forEach(function(t){if(t&&t.scrollTrigger)t.scrollTrigger.kill();if(t)t.kill()})};
 });
 
@@ -1072,7 +1092,7 @@ kills.push(t5);
 gsap.set(['.outro-kicker','.outro-sub'],{opacity:1});
 
 // Section reveals
-[['#specs .sec-head > *','#specs'],['.spec','.spec-row'],['.news .sec-head > *','#news'],['.news-card','.news-grid'],['.reserve-wrap > *','#reserve']].forEach(function(pair){var els=$$(pair[0]);if(!els.length)return;kills.push(gsap.from(els,{opacity:0,y:22,duration:.7,stagger:.06,ease:EASE,scrollTrigger:{trigger:pair[1],start:'top 88%',once:true}}))});
+[['#specs .sec-head > *','#specs'],['.spec','.spec-row'],['.news .sec-head > *','#news'],['.news-card','.news-track'],['.reserve-wrap > *','#reserve']].forEach(function(pair){var els=$$(pair[0]);if(!els.length)return;kills.push(gsap.from(els,{opacity:0,y:22,duration:.7,stagger:.06,ease:EASE,scrollTrigger:{trigger:pair[1],start:'top 88%',once:true}}))});
 return function(){kills.forEach(function(t){if(t&&t.scrollTrigger)t.scrollTrigger.kill();if(t)t.kill()})};
 });
 
@@ -1214,6 +1234,31 @@ initLenis();initCursor();initInteractiveExtras();
 if(hasGSAP&&!REDUCED){gsap.set('.topbar',{opacity:0,y:-12})}
 preload();
 window.addEventListener('load',function(){if(hasGSAP)ScrollTrigger.refresh()});
+})();
+</script>
+<script>
+(function(){
+  var viewport=document.querySelector('.news-viewport');
+  var track=document.querySelector('.news-track');
+  var prev=document.querySelector('.news-arrow--prev');
+  var next=document.querySelector('.news-arrow--next');
+  if(!viewport||!track||!prev||!next)return;
+  function step(){
+    var card=track.querySelector('.news-card');
+    if(!card)return 0;
+    var gap=parseFloat(getComputedStyle(track).gap)||0;
+    return card.getBoundingClientRect().width+gap;
+  }
+  function update(){
+    var max=Math.max(0,viewport.scrollWidth-viewport.clientWidth);
+    prev.disabled=viewport.scrollLeft<=2;
+    next.disabled=viewport.scrollLeft>=max-2;
+  }
+  prev.addEventListener('click',function(){viewport.scrollBy({left:-step(),behavior:'smooth'})});
+  next.addEventListener('click',function(){viewport.scrollBy({left:step(),behavior:'smooth'})});
+  viewport.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
 })();
 </script>
 <script>
