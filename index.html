@@ -213,22 +213,8 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
 .slab figcaption{padding-top:14px;display:flex;flex-direction:column;gap:6px}
 .slab figcaption b{font-family:var(--grotesk);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--white)}
 .slab figcaption span{font-size:.86rem;color:var(--white-dim);line-height:1.5;max-width:38ch}
-.gallery-rail{position:relative;height:1px;background:rgba(255,255,255,.1);margin-top:clamp(40px,8vh,80px)}
-.gallery-rail span{position:absolute;top:-1px;bottom:-1px;left:0;width:100%;background:linear-gradient(90deg,var(--ember),rgba(34,197,94,.2));transform:scaleX(0);transform-origin:left;will-change:transform}
-
-/* 04.5 NEWS */
-.news{padding:clamp(80px,13vh,160px) 0;background:var(--black);border-top:1px solid var(--line-soft)}
-.news-track{display:flex;gap:24px;overflow-x:auto;padding-bottom:24px;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut)}
-.news-track::-webkit-scrollbar{display:none}
-.news-card{flex:0 0 calc(33.333% - 16px);min-width:280px;scroll-snap-align:start;background:var(--ink);border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s var(--ease),border-color .4s}
-.news-card:hover{transform:translateY(-8px);border-color:var(--ember)}
-.news-img{aspect-ratio:16/10;overflow:hidden;background:#111}
-.news-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.news-card:hover .news-img img{transform:scale(1.05)}
-.news-content{padding:24px;display:flex;flex-direction:column;flex-grow:1}
-.news-date{font-family:var(--grotesk);font-size:.6rem;font-weight:700;letter-spacing:.15em;color:var(--ember);margin-bottom:12px;text-transform:uppercase}
-.news-head{font-family:var(--grotesk);font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.3}
-.news-excerpt{font-size:.85rem;color:var(--white-dim);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.gallery-rail{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(22px,4vh,40px);height:1px;background:rgba(255,255,255,.14)}
+.gallery-rail span{display:block;height:100%;width:100%;background:var(--ember);transform:scaleX(.08);transform-origin:left;will-change:transform}
 @media (max-width:900px){.gallery-pin{height:auto;min-height:0;padding:clamp(70px,11vh,130px) 0}.gallery-track{flex-direction:column;gap:clamp(40px,7vh,70px);transform:none!important}.slab{width:100%}.gallery-rail{display:none}}
 
 /* 05 NEWS — ATÖLYEDEN SON GELİŞMELER */
@@ -887,45 +873,6 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
       <p class="outro-kicker" aria-hidden="true">ŞİMDİYE KADAR — HİÇBİR ŞEY BİZİ</p>
       <h2 class="outro-word" id="outroTitle"><span class="sr-only">Durduramadı</span><span class="outro-letters" id="outroLetters" aria-hidden="true">DURDURAMADI</span></h2>
       <p class="outro-sub">Yüzlerce proje. Düzinelerce marka. Asla sıradan olmadık.<br>Aracınızın potansiyelini sonuna kadar zorluyoruz.</p>
-    </div>
-  </section>
-
-  <!-- 06.5 NEWS -->
-  <section class="news" id="news" aria-labelledby="newsTitle">
-    <div class="wrap">
-      <div class="sec-head" style="margin-bottom: clamp(30px, 5vh, 50px);">
-        <p class="kicker"><i class="dot"></i>06.5 — HABERLER & DUYURULAR</p>
-        <h2 class="sec-title sec-title--sm" id="newsTitle">Atölyeden<br><em>son</em> gelişmeler.</h2>
-      </div>
-      <div class="news-track">
-        <!-- HABER KARTI 1 -->
-        <article class="news-card">
-          <div class="news-img"><img src="images/red_bmw.jpg" alt="Haber 1" loading="lazy"></div>
-          <div class="news-content">
-            <span class="news-date">18 Eylül 2026</span>
-            <h3 class="news-head">Kışlık Bakım Kampanyası Başladı</h3>
-            <p class="news-excerpt">Havalı süspansiyon sistemleriniz için kış öncesi genel bakım ve antifriz yenileme hizmetlerimiz indirimli fiyatlarla başladı. Randevunuzu hemen oluşturun.</p>
-          </div>
-        </article>
-        <!-- HABER KARTI 2 -->
-        <article class="news-card">
-          <div class="news-img"><img src="images/before.jpg" alt="Haber 2" loading="lazy"></div>
-          <div class="news-content">
-            <span class="news-date">10 Eylül 2026</span>
-            <h3 class="news-head">G20 Projemiz Yayında</h3>
-            <p class="news-excerpt">Son tamamladığımız BMW G20 projemizin öncesi ve sonrası detayları artık portfolyo sayfamızda yayında. Dönüşümü kendi gözlerinizle incelemeyi unutmayın.</p>
-          </div>
-        </article>
-        <!-- HABER KARTI 3 -->
-        <article class="news-card">
-          <div class="news-img"><img src="images/white_bmw_5.jpg" alt="Haber 3" loading="lazy"></div>
-          <div class="news-content">
-            <span class="news-date">1 Eylül 2026</span>
-            <h3 class="news-head">Yeni İş Ortaklığımız</h3>
-            <p class="news-excerpt">Dünyanın önde gelen coilover üreticileriyle yaptığımız yeni tedarik anlaşması sayesinde, artık çok daha geniş ve premium bir ürün yelpazesi sunuyoruz.</p>
-          </div>
-        </article>
-      </div>
     </div>
   </section>
 
