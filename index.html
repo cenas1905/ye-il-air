@@ -231,6 +231,28 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
 .news-excerpt{font-size:.85rem;color:var(--white-dim);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 @media (max-width:900px){.gallery-pin{height:auto;min-height:0;padding:clamp(70px,11vh,130px) 0}.gallery-track{flex-direction:column;gap:clamp(40px,7vh,70px);transform:none!important}.slab{width:100%}.gallery-rail{display:none}}
 
+/* 05 NEWS — ATÖLYEDEN SON GELİŞMELER */
+.news{position:relative;background:var(--black);padding:clamp(80px,14vh,160px) 0;border-top:1px solid var(--line-soft)}
+.news .sec-head{margin-bottom:clamp(36px,6vh,64px)}
+.news-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.news-card{display:flex;flex-direction:column;border:1px solid var(--line-soft);background:var(--ink-2);border-radius:12px;overflow:hidden;transition:border-color .35s,transform .5s var(--ease)}
+.news-card:hover{border-color:rgba(34,197,94,.45);transform:translateY(-4px)}
+.news-card>a{display:flex;flex-direction:column;height:100%}
+.news-thumb{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--ink-3)}
+.news-thumb img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);transition:transform .9s var(--ease),filter .9s var(--ease);filter:saturate(.88) contrast(1.05)}
+.news-card:hover .news-thumb img{transform:scale(1);filter:saturate(1.05) contrast(1.06)}
+.news-tag{position:absolute;top:12px;left:12px;font-family:var(--grotesk);font-size:.52rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#000;background:var(--ember);padding:5px 11px;border-radius:999px}
+.news-body{display:flex;flex-direction:column;gap:9px;padding:clamp(14px,1.4vw,20px);flex:1;text-align:left}
+.news-date{font-family:var(--grotesk);font-size:.55rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white-faint)}
+.news-title{font-family:var(--grotesk);font-size:1rem;font-weight:700;letter-spacing:.01em;line-height:1.22;color:var(--white)}
+.news-desc{font-size:.82rem;line-height:1.5;color:var(--white-dim)}
+.news-link{margin-top:auto;padding-top:4px;display:inline-flex;align-items:center;gap:7px;font-family:var(--grotesk);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ember)}
+.news-link svg{width:13px;height:13px;flex:none}
+.news-more{margin-top:clamp(32px,5vh,52px);text-align:center}
+.news-more .topnav-cta{font-family:var(--grotesk);font-weight:700;letter-spacing:.12em;display:inline-flex;align-items:center;gap:10px;color:var(--white)!important}
+@media (max-width:1024px){.news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.news-grid{grid-template-columns:1fr}.news-title{font-size:.94rem}}
+
 /* 06 OUTRO */
 .outro{position:relative;background:var(--black)}
 .outro-pin{position:relative;height:100svh;min-height:560px;display:grid;place-items:center;overflow:hidden;padding:0 var(--gut)}
@@ -487,8 +509,27 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
     "addressCountry": "TR"
   },
   "areaServed": "Antakya, Hatay",
-  "sameAs": ["https://www.instagram.com/yesilair"],
+  "sameAs": ["https://www.instagram.com/yesilair", "https://www.instagram.com/tezcanates"],
   "founder": { "@type": "Person", "name": "Tezcan Ateş" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Atölyeden Son Gelişmeler — YEŞİL AIR Süspansiyon",
+  "numberOfItems": 8,
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"url":"https://www.instagram.com/tezcanates/reel/DdWl9REAXRt/","item":{"@type":"Article","headline":"VW Scirocco T'Series","datePublished":"2026-09-16","image":"https://yesilair.com.tr/images/ig/ig-scirocco.jpg"}},
+    {"@type":"ListItem","position":2,"url":"https://www.instagram.com/tezcanates/reel/Dc_ZnMfgRh5/","item":{"@type":"Article","headline":"BMW G20 M Power","datePublished":"2026-09-07","image":"https://yesilair.com.tr/images/ig/ig-g20-mpower.jpg"}},
+    {"@type":"ListItem","position":3,"url":"https://www.instagram.com/yesilair/reel/DcdW5xHIVRR/","item":{"@type":"Article","headline":"Brembo Kapağı Doğru Montaj","datePublished":"2026-08-25","image":"https://yesilair.com.tr/images/ig/ig-brembo.jpg"}},
+    {"@type":"ListItem","position":4,"url":"https://www.instagram.com/tezcanates/p/DadXD4gAHNO/","item":{"@type":"Article","headline":"E36 Supra 2JZ Drift","datePublished":"2026-07-06","image":"https://yesilair.com.tr/images/ig/ig-e36-supra.jpg"}},
+    {"@type":"ListItem","position":5,"url":"https://www.instagram.com/tezcanates/p/DaZ87cHAIva/","item":{"@type":"Article","headline":"BMW G20 M Power — Gösterişe Gerek Yok","datePublished":"2026-07-05","image":"https://yesilair.com.tr/images/ig/ig-g20.jpg"}},
+    {"@type":"ListItem","position":6,"url":"https://www.instagram.com/yesilair/p/DWrUU0ZCMu0/","item":{"@type":"Article","headline":"VW Passat B8 Konfor Düşüm","datePublished":"2026-04-03","image":"https://yesilair.com.tr/images/ig/ig-passat-b8.jpg"}},
+    {"@type":"ListItem","position":7,"url":"https://www.instagram.com/yesilair/p/DWrUGE_CNdg/","item":{"@type":"Article","headline":"BMW F10 Konfor Düşüm","datePublished":"2026-04-03","image":"https://yesilair.com.tr/images/ig/ig-f10.jpg"}},
+    {"@type":"ListItem","position":8,"url":"https://www.instagram.com/yesilair/p/DWrUAJFiDoo/","item":{"@type":"Article","headline":"Renault Clio 4 Coilover Montajı","datePublished":"2026-04-03","image":"https://yesilair.com.tr/images/ig/ig-clio4.jpg"}}
+  ]
 }
 </script>
 </head>
@@ -536,6 +577,7 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
     <a href="#specs" data-cursor="BAK">Teknik</a>
     <a href="#drive" data-cursor="BAK">Drift</a>
     <a href="#gallery" data-cursor="BAK">Detay</a>
+    <a href="#news" data-cursor="BAK">Gelişmeler</a>
     <a href="projeler.html" data-cursor="BAK">Projeler</a>
     <a class="topnav-cta" href="#reserve" data-cursor="TIKLA">Randevu Al</a>
   </nav>
@@ -704,6 +746,137 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
     </div>
   </section>
 
+  <!-- 05 ATÖLYEDEN SON GELİŞMELER -->
+  <section class="news" id="news" aria-labelledby="newsTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker"><i class="dot"></i>05 — ATÖLYEDEN</p>
+        <h2 class="sec-title" id="newsTitle">Son<br><em>gelişmeler</em>.</h2>
+        <p class="sec-note">Atölyeden ve pistten taze haberler. Instagram'da paylaştığımız son işleri ve projeleri buradan takip edin.</p>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <a href="https://www.instagram.com/tezcanates/reel/DdWl9REAXRt/" target="_blank" rel="noopener" aria-label="VW Scirocco T'Series projesi — Instagram'da aç">
+            <div class="news-thumb">
+              <img src="images/ig/ig-scirocco.jpg" alt="VW Scirocco T'Series stance projesi" loading="lazy">
+              <span class="news-tag">Proje</span>
+            </div>
+            <div class="news-body">
+              <time class="news-date" datetime="2026-09-16">16 Eylül 2026</time>
+              <h3 class="news-title">VW Scirocco T'Series</h3>
+              <p class="news-desc">Atölyeden çıkan son stance projesi. T'Series Scirocco yolda.</p>
+              <span class="news-link">Instagram'da gör <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+        </article>
+        <article class="news-card">
+          <a href="https://www.instagram.com/tezcanates/reel/Dc_ZnMfgRh5/" target="_blank" rel="noopener" aria-label="BMW G20 M Power projesi — Instagram'da aç">
+            <div class="news-thumb">
+              <img src="images/ig/ig-g20-mpower.jpg" alt="BMW G20 M Power projesi" loading="lazy">
+              <span class="news-tag">M Power</span>
+            </div>
+            <div class="news-body">
+              <time class="news-date" datetime="2026-09-07">7 Eylül 2026</time>
+              <h3 class="news-title">BMW G20 M Power</h3>
+              <p class="news-desc">Gözler yalan söylemez. G20'nin yeni duruşu.</p>
+              <span class="news-link">Instagram'da gör <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+        </article>
+        <article class="news-card">
+          <a href="https://www.instagram.com/yesilair/reel/DcdW5xHIVRR/" target="_blank" rel="noopener" aria-label="Brembo kapağı doğru montajı — Instagram'da aç">
+            <div class="news-thumb">
+              <img src="images/ig/ig-brembo.jpg" alt="Brembo kapağı doğru montajı" loading="lazy">
+              <span class="news-tag">Atölye</span>
+            </div>
+            <div class="news-body">
+              <time class="news-date" datetime="2026-08-25">25 Ağustos 2026</time>
+              <h3 class="news-title">Brembo Kapağı Doğru Montaj</h3>
+              <p class="news-desc">Brembo kapağı silikonla takılmaz. Doğru işçilik nasıl olur?</p>
+              <span class="news-link">Instagram'da gör <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+        </article>
+        <article class="news-card">
+          <a href="https://www.instagram.com/tezcanates/p/DadXD4gAHNO/" target="_blank" rel="noopener" aria-label="BMW E36 Supra 2JZ drift aracı — Instagram'da aç">
+            <div class="news-thumb">
+              <img src="images/ig/ig-e36-supra.jpg" alt="BMW E36 Supra 2JZ drift aracı" loading="lazy">
+              <span class="news-tag">Drift</span>
+            </div>
+            <div class="news-body">
+              <time class="news-date" datetime="2026-07-06">6 Temmuz 2026</time>
+              <h3 class="news-title">E36 Supra 2JZ Drift</h3>
+              <p class="news-desc">Green36. 2JZ power ile pistte duman bırakmaya devam.</p>
+              <span class="news-link">Instagram'da gör <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+        </article>
+        <article class="news-card">
+          <a href="https://www.instagram.com/tezcanates/p/DaZ87cHAIva/" target="_blank" rel="noopener" aria-label="BMW G20 M Power — Instagram'da aç">
+            <div class="news-thumb">
+              <img src="images/ig/ig-g20.jpg" alt="BMW G20 M Power" loading="lazy">
+              <span class="news-tag">M Power</span>
+            </div>
+            <div class="news-body">
+              <time class="news-date" datetime="2026-07-05">5 Temmuz 2026</time>
+              <h3 class="news-title">G20 — Gösterişe Gerek Yok</h3>
+              <p class="news-desc">Gösterişe gerek yok, siz bizi iyi bilirsiniz zaten.</p>
+              <span class="news-link">Instagram'da gör <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+        </article>
+        <article class="news-card">
+          <a href="https://www.instagram.com/yesilair/p/DWrUU0ZCMu0/" target="_blank" rel="noopener" aria-label="VW Passat B8 konfor düşüm — Instagram'da aç">
+            <div class="news-thumb">
+              <img src="images/ig/ig-passat-b8.jpg" alt="VW Passat B8 konfor düşüm" loading="lazy">
+              <span class="news-tag">Teslim</span>
+            </div>
+            <div class="news-body">
+              <time class="news-date" datetime="2026-04-03">3 Nisan 2026</time>
+              <h3 class="news-title">VW Passat B8 Konfor Düşüm</h3>
+              <p class="news-desc">İsmail Bey'e hayırlı olsun. Konfor düşüm tamamlandı.</p>
+              <span class="news-link">Instagram'da gör <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+        </article>
+        <article class="news-card">
+          <a href="https://www.instagram.com/yesilair/p/DWrUGE_CNdg/" target="_blank" rel="noopener" aria-label="BMW F10 konfor düşüm — Instagram'da aç">
+            <div class="news-thumb">
+              <img src="images/ig/ig-f10.jpg" alt="BMW F10 konfor düşüm" loading="lazy">
+              <span class="news-tag">Teslim</span>
+            </div>
+            <div class="news-body">
+              <time class="news-date" datetime="2026-04-03">3 Nisan 2026</time>
+              <h3 class="news-title">BMW F10 Konfor Düşüm</h3>
+              <p class="news-desc">Şah Motors Mehmet Ali Bey'e hayırlı olsun.</p>
+              <span class="news-link">Instagram'da gör <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+        </article>
+        <article class="news-card">
+          <a href="https://www.instagram.com/yesilair/p/DWrUAJFiDoo/" target="_blank" rel="noopener" aria-label="Renault Clio 4 coilover montajı — Instagram'da aç">
+            <div class="news-thumb">
+              <img src="images/ig/ig-clio4.jpg" alt="Renault Clio 4 coilover montajı" loading="lazy">
+              <span class="news-tag">Coilover</span>
+            </div>
+            <div class="news-body">
+              <time class="news-date" datetime="2026-04-03">3 Nisan 2026</time>
+              <h3 class="news-title">Renault Clio 4 Coilover</h3>
+              <p class="news-desc">Coilover montajı ve düşüm tamamlandı. Hayırlı olsun.</p>
+              <span class="news-link">Instagram'da gör <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            </div>
+          </a>
+        </article>
+      </div>
+      <div class="news-more">
+        <a href="https://www.instagram.com/yesilair" target="_blank" rel="noopener" class="topnav-cta" data-cursor="TIKLA">
+          TÜMÜNÜ INSTAGRAM'DA GÖR
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- 06 OUTRO -->
   <section class="outro" id="outro" aria-labelledby="outroTitle">
     <div class="outro-pin" id="outroPin">
@@ -797,12 +970,14 @@ h1,h2,h3,p,dl,dd,figure,figcaption{margin:0}
       <a href="#specs" data-cursor="BAK">Air Ride</a>
       <a href="#drive" data-cursor="BAK">Coilover</a>
       <a href="#gallery" data-cursor="BAK">Stance & Drift</a>
+      <a href="#news" data-cursor="BAK">Atölyeden Gelişmeler</a>
     </nav>
     <div class="foot-col">
       <p class="foot-h">İletişim</p>
       <a href="tel:+905317111777" data-cursor="TIKLA">0531 711 17 77</a>
       <a href="https://wa.me/905317111777" target="_blank" rel="noopener" data-cursor="TIKLA">WhatsApp</a>
       <a href="https://www.instagram.com/yesilair" target="_blank" rel="noopener" data-cursor="TIKLA">@yesilair</a>
+      <a href="https://www.instagram.com/tezcanates" target="_blank" rel="noopener" data-cursor="TIKLA">@tezcanates</a>
     </div>
     <div class="foot-col foot-col--end">
       <p class="foot-h">Yasal</p>
@@ -917,9 +1092,10 @@ var outroTL=gsap.timeline({scrollTrigger:{trigger:'#outro',start:'top top',end:'
 outroTL.fromTo('.outro-bg',{yPercent:12,scale:1.1},{yPercent:-6,scale:1,ease:'none',duration:1},0).fromTo('.outro-letters .ch',{yPercent:108,opacity:0},{yPercent:0,opacity:1,stagger:.055,duration:.34,ease:'power3.out'},.05).fromTo('.outro-kicker',{opacity:0,letterSpacing:'.16em'},{opacity:1,letterSpacing:'.36em',duration:.25},.1).fromTo('.outro-sub',{opacity:0,y:22},{opacity:1,y:0,duration:.22},.62);
 kills.push(outroTL);
 
-var reveals=[['#specs .sec-head > *','#specs'],['#config .config-head > *','#config'],['.reserve-wrap > *','#reserve'],['.foot-col','.foot-grid']];
+var reveals=[['#specs .sec-head > *','#specs'],['#config .config-head > *','#config'],['.news .sec-head > *','#news'],['.reserve-wrap > *','#reserve'],['.foot-col','.foot-grid']];
 reveals.forEach(function(pair){var els=$$(pair[0]);if(!els.length)return;var t=gsap.from(els,{opacity:0,y:34,duration:.9,stagger:.07,ease:EASE,scrollTrigger:{trigger:pair[1],start:'top 78%',once:true}});kills.push(t)});
 gsap.from('.spec',{opacity:0,y:40,duration:.9,stagger:.09,ease:EASE,scrollTrigger:{trigger:'.spec-row',start:'top 82%',once:true}});
+gsap.from('.news-card',{opacity:0,y:36,duration:.8,stagger:.07,ease:EASE,scrollTrigger:{trigger:'.news-grid',start:'top 82%',once:true}});
 return function(){kills.forEach(function(t){if(t&&t.scrollTrigger)t.scrollTrigger.kill();if(t)t.kill()})};
 });
 
@@ -949,7 +1125,7 @@ kills.push(t5);
 gsap.set(['.outro-kicker','.outro-sub'],{opacity:1});
 
 // Section reveals
-[['#specs .sec-head > *','#specs'],['.spec','.spec-row'],['.reserve-wrap > *','#reserve']].forEach(function(pair){var els=$$(pair[0]);if(!els.length)return;kills.push(gsap.from(els,{opacity:0,y:22,duration:.7,stagger:.06,ease:EASE,scrollTrigger:{trigger:pair[1],start:'top 88%',once:true}}))});
+[['#specs .sec-head > *','#specs'],['.spec','.spec-row'],['.news .sec-head > *','#news'],['.news-card','.news-grid'],['.reserve-wrap > *','#reserve']].forEach(function(pair){var els=$$(pair[0]);if(!els.length)return;kills.push(gsap.from(els,{opacity:0,y:22,duration:.7,stagger:.06,ease:EASE,scrollTrigger:{trigger:pair[1],start:'top 88%',once:true}}))});
 return function(){kills.forEach(function(t){if(t&&t.scrollTrigger)t.scrollTrigger.kill();if(t)t.kill()})};
 });
 
